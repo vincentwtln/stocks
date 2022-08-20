@@ -1,0 +1,24 @@
+﻿[ 
+  {
+    "symbol" : "CMCSA",
+    "name" : "Comcast Corporation",
+    "price" : 40.29,
+    "exchange" : "NASDAQ Global Select",
+    "exchangeShortName" : "NASDAQ",
+    "type" : "stock"
+  }, {
+    "symbol" : "KMI",
+    "name" : "Kinder Morgan, Inc.",
+    "price" : 16.98,
+    "exchange" : "New York Stock Exchange",
+    "exchangeShortName" : "NYSE",
+    "type" : "stock"
+  }, {
+    "symbol" : "INTC",
+    "name" : "Intel Corporation",
+    "price" : 36.34,
+    "exchange" : "NASDAQ Global Select",
+    "exchangeShortName" : "NASDAQ",
+    "type" : "stock"
+  }
+]
