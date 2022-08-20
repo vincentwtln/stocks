@@ -1,0 +1,179 @@
+﻿@page "/stock/{ticker}"
+@using BlazorApp1.Shared.Data
+@inject HttpClient Http
+@inject ApiKey fmpApiKey
+
+<style>
+    .e-tab .e-tab-header .e-toolbar-item.e-active {
+        background: #4B4E6D;
+    }
+
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover {
+        background-color:rgba(149, 163, 179, 0.5) !important;
+    }
+    .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text {
+        color: white !important;
+    }
+</style>
+
+@if (profiles == null || ratings == null || stockprices == null || reports == null || forecasts == null)
+{
+    <p>Loading data...</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-xl-6 p-1">
+            <div class="grid-container">
+                <div class="grid-item-image"><img src="@profiles.First().image" alt="Company Logo" width="65"/> </div>
+                <div class="grid-item-text"><h1>@profiles.First().companyName (@reports.First().symbol)</h1></div>
+            </div>
+            
+            <h2 style="@StyleForNumber(@reports.First().dcf,@stockprices.First().price);font-weight:bold">@stockprices.First().price.ToString("c")</h2>
+            
+            <hr />
+
+            <div class="grid-container-list">
+                <div class="grid-item-list">
+                    <ul>
+                        <li>DCF: @reports.First().dcf.ToString("c")</li>
+                        <li>Rating: @ratings.First().ratingRecommendation (Score: @ratings.First().ratingScore)</li>
+                        <li>Market Cap (Thsd): @stockprices.First().newMarketCap.ToString("c")</li>
+                        <li>Volume: @stockprices.First().volume.ToString("n2")</li>
+                    </ul>
+                </div>
+                <div class="grid-item-list">
+                    <ul>
+                        <li>EPS: @stockprices.First().eps.ToString("f2")</li>
+                        <li>PE: @stockprices.First().pe.ToString("f2")</li>
+                        <li>Shares Outstanding: @stockprices.First().sharesOutstanding.ToString("n2")</li>
+                        <li>Exchange: @stockprices.First().exchange</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 p-1">
+            <SfChart Title="Price Chart" Width="100%" Height="100%" Background="#EEE">
+                <ChartPrimaryXAxis IntervalType="IntervalType.Auto" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime"></ChartPrimaryXAxis>
+                <ChartPrimaryYAxis LabelFormat="c"/>
+                <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+                <ChartZoomSettings EnableMouseWheelZooming="true" EnablePinchZooming="true" EnableSelectionZooming="true"></ChartZoomSettings>
+                <ChartCrosshairSettings Enable="true"></ChartCrosshairSettings>
+                <ChartSeriesCollection>
+                    <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#428BFF"></ChartSeries>
+                </ChartSeriesCollection>
+            </SfChart>
+        </div>
+    </div>
+}
+
+<br />
+
+@if (profiles == null)
+{
+}
+else
+{
+    <DetailTabsComponent tickerName="@ticker"></DetailTabsComponent>
+}
+
+
+
+@code {
+    [Parameter]
+    public string? ticker { get; set; }
+    private int timeseries = 365;
+
+    private Profile[]? profiles;
+    private Report[]? reports;
+    private Detail[]? stockprices;
+    private Rating[]? ratings;
+    private PriceHistory? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reports = await Http.GetFromJsonAsync<Report[]>("discounted-cash-flow/" + ticker + "?limit=120&apikey=" + fmpApiKey.myApiKey);
+        stockprices = await Http.GetFromJsonAsync<Detail[]>("quote/" + ticker + "?limit=120&apikey=" + fmpApiKey.myApiKey);
+        profiles = await Http.GetFromJsonAsync<Profile[]>("profile/" + ticker + "?apikey=" + fmpApiKey.myApiKey);
+        ratings = await Http.GetFromJsonAsync<Rating[]>("rating/" + ticker + "?apikey=" + fmpApiKey.myApiKey);
+        forecasts = await Http.GetFromJsonAsync<PriceHistory>("historical-price-full/" + ticker + "?serietype=line&timeseries=" + timeseries + "&apikey=" + fmpApiKey.myApiKey);
+    }
+
+    private async Task GetPriceHistory()
+    {
+        forecasts = await Http.GetFromJsonAsync<PriceHistory>("historical-price-full/" + ticker + "?serietype=line&timeseries=" + timeseries + "&apikey=" + fmpApiKey.myApiKey);
+    }
+
+    public partial class PriceHistory : Historical
+    {
+        public string? Symbol { get; set; }
+        public Historical[]? Historical { get; set; }
+
+    }
+
+    public class Historical
+    {
+        public string? date { get; set; }
+
+        public double close { get; set; }
+    }
+
+    public class Profile
+    {
+        public double beta { get; set; }
+        public string? companyName { get; set; }
+        public string? isin { get; set; }
+        public string? exchange { get; set; }
+        public string? exchangeShortName { get; set; }
+        public string? industry { get; set; }
+        public string? website { get; set; }
+        public string? description { get; set; }
+        public string? ceo { get; set; }
+        public string? sector { get; set; }
+        public string? country { get; set; }
+        public string? fullTimeEmployees { get; set; }
+        public string? phone { get; set; }
+        public string? address { get; set; }
+        public string? city { get; set; }
+        public string? state { get; set; }
+        public string? zip { get; set; }
+        public string? image { get; set; }
+        public string? ipoDate { get; set; }
+        public bool isEtf { get; set; }
+        public bool isActivelyTrading { get; set; }
+        public string finalAddress => "Address: " + address + ", " + zip + " " + city + ", " + state + " " + country + ". Phone: " + phone;
+    }
+
+    public class Report
+    {
+        public DateTime Date { get; set; }
+        public string? symbol { get; set; }
+        public double dcf { get; set; }
+    }
+
+    public class Detail
+    {
+        public double price { get; set; }
+        public double marketCap { get; set; }
+        public double volume { get; set; }
+        public string? exchange { get; set; }
+        public double eps { get; set; }
+        public double pe { get; set; }
+        public double sharesOutstanding { get; set; }
+        public double newMarketCap => marketCap / 1000;
+    }
+
+    public class Rating
+    {
+        public DateTime date { get; set; }
+        public int ratingScore { get; set; }
+        public string? ratingRecommendation { get; set; }
+    }
+
+    private string StyleForNumber(double disCF, double stoPr)
+    {
+        if (disCF > stoPr) return "color:green";
+        if (disCF < stoPr)  return "color:red";
+        return "background:white";
+    }
+}

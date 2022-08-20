@@ -1,0 +1,84 @@
+﻿@page "/"
+@inject HttpClient Http
+@inject ApiKey fmpApiKey
+@using BlazorApp1.Shared.Data
+
+<PageHeader HeaderTitle="Welcome back!"></PageHeader>
+
+<style>
+    :root {
+      --color: #428BFF;
+      --transition-time: 0.5s;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #fafafa;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+      color: inherit;
+    }
+</style>
+
+<!--
+<div class="buttons">
+  <div class="container">
+      <a href="stocks" class="btn effect01"><span>Analyze</span></a>
+  </div>
+</div>
+-->
+
+<div class="basic-info">
+    <h5>
+        The easiest way to analyze stocks! Try it now for free...
+    </h5>
+    <h6 style="font-style: italic">
+        Information provided without guarantee!
+    </h6>
+</div>
+
+<section class="cards-wrapper">
+  <div class="card-grid-space">
+    <a class="card" href="stocks" style="--bg-img: url(https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg)">
+      <div>
+        <h1>Analyzer</h1>
+        <p>Find informations about a specific company and it's stock listing...</p>
+        <div class="tags">
+          <div class="tag">Stocks</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <a class="card" href="screener" style="--bg-img: url('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/basic-types-of-html-tags/cover.jpg')">
+      <div>
+        <h1>Screener</h1>
+        <p>Screen the market for stocks that match your requirements...</p>
+        <div class="tags">
+          <div class="tag">Market</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <a class="card" href="info" style="--bg-img: url('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/links-images-about-file-paths/cover.jpg')">
+      <div>
+        <h1>Links</h1>
+        <p>This is a disclaimer for the project, including all the links we used!</p>
+        <div class="tags">
+          <div class="tag">Readme</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
+</section>
+
+@code {
+    
+}

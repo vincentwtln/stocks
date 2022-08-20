@@ -1,0 +1,137 @@
+﻿@page "/stocks"
+@inject HttpClient Http
+@inject ApiKey fmpApiKey
+@using BlazorApp1.Shared.Data
+
+<PageHeader HeaderTitle="Stocks"></PageHeader>
+<br />
+
+<div style="margin-top: 2rem; margin-bottom: 3rem;">
+    <div class="container">
+        <div class="row height d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="form">
+                    <input type="text" class="form-control form-input" @bind-value="SearchTerm" placeholder="Search anything..." />
+                    <button type="submit" class="btn btn-primary" @onclick="GetCompanies">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (companies == null || string.IsNullOrEmpty(SearchTerm))
+{
+   if (symbols == null)
+   {
+        <p><em>Loading...</em></p>
+    } else
+    {
+        @foreach (var company in symbols)
+        {
+            <div class="container">
+                <div class="row row_v">
+                    <div class="col-lg-10 cont_v">
+                        <div class="career-search mb-60">
+                            <div class="filter-result">
+                                <div class="job-box d-md-flex align-items-center justify-content-between">
+                                    <div class="job-left d-md-flex align-items-center flex-wrap">
+                                        <div class="temp-img">
+                                            <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                                <img src="@GetImageUrl(@company.symbol)" />
+                                            </div>
+                                        </div>
+                                        <div class="job-content">
+                                            <div class="header_ticker">
+                                                @company.symbol
+                                            </div>
+                                            <div class="company_details">
+                                                @company.name | @company.headQuarter
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="job-right my-4 flex-shrink-0">
+                                        <a href="@($"/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+else
+{
+    @foreach (var company in companies)
+    {
+        <div class="container">
+            <div class="row row_v">
+                <div class="col-lg-10 cont_v">
+                    <div class="career-search mb-60">
+                        <div class="filter-result">
+                            <div class="job-box d-md-flex align-items-center justify-content-between">
+                                <div class="job-left d-md-flex align-items-center flex-wrap">
+                                    <div class="temp-img">
+                                        <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                            <img src="@GetImageUrl(@company.symbol)" />
+                                        </div>
+                                    </div>
+                                    <div class="job-content">
+                                        <div class="header_ticker">
+                                            @company.symbol
+                                        </div>
+                                        <div class="company_details">
+                                            @company.name | @company.exchangeShortName
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="@($"/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private StatementList[]? symbols;
+    private SearchItems[]? companies;
+    string SearchTerm { get; set; } = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        symbols = await Http.GetFromJsonAsync<StatementList[]>("dowjones_constituent?apikey=" + fmpApiKey.myApiKey);
+    }
+
+    protected async Task GetCompanies()
+    {
+        companies = await Http.GetFromJsonAsync<SearchItems[]>("search?query=" + SearchTerm + "&exchange=NASDAQ&apikey=" + fmpApiKey.myApiKey);
+    }
+
+    public class StatementList
+    {
+        public string symbol { get; set; }
+        public string? name { get; set; }
+        public string? sector { get; set; }
+        public string? founded { get; set; }
+        public string? headQuarter { get; set; }
+    }
+
+    public class SearchItems
+    {
+        public string? symbol { get; set; }
+        public string? name { get; set; }
+        public string? exchangeShortName { get; set; }
+        public string? currency { get; set; }
+    }
+
+    private string GetImageUrl(string ticker)
+    {
+        return "https://financialmodelingprep.com/image-stock/"+ticker+".png";
+    }
+}

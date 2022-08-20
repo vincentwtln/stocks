@@ -1,0 +1,398 @@
+﻿@page "/screener"
+@inject HttpClient Http
+@inject ApiKey fmpApiKey
+@using BlazorApp1.Shared.Data
+
+<PageHeader HeaderTitle="Screener"></PageHeader>
+<br />
+
+<div class="row">
+    <div class="col-xl-3 p-2">
+        <h6>Select sector:</h6>
+        <select class="form-control form-input" name="sector" id="sector" @bind="sector">
+            @foreach (var fe_sector in sectors)
+            {
+                <option value="@fe_sector.sectorUrlPart">@fe_sector.sectorName</option>
+            }
+            <option value="">Reset</option>
+        </select>
+    </div>
+    
+    <div class="col-xl-3 p-2">
+        <h6>Select industry:</h6>
+        <select class="form-control form-input" name="industry" id="industry" @bind="industry">
+            @foreach (var fe_industry in industries)
+            {
+                <option value="@fe_industry.industryUrlPart">@fe_industry.industryName</option>
+            }
+            <option value="">Reset</option>
+        </select>
+    </div>
+
+    <div class="col-xl-3 p-2">
+        <h6>Select country:</h6>
+        <select class="form-control form-input" name="country" id="country" @bind="country">
+            @foreach (var fe_country in countries)
+            {
+                <option value="@fe_country.countryCode">@fe_country.countryCode</option>
+            }
+            <option value="">Reset</option>
+        </select>
+    </div>
+
+    <div class="col-xl-3 p-2">
+        <h6>Select exchange:</h6>
+        <select class="form-control form-input" name="exchange" id="exchange" @bind="exchange">
+            @foreach (var fe_exchange in exchanges)
+            {
+                <option value="@fe_exchange.exchangeName">@fe_exchange.exchangeName</option>
+            }
+            <option value="">Reset</option>
+        </select>
+    </div>
+
+    <div class="col-xl-3 p-2">
+        <h6>Is ETF:</h6>
+        <input class="form-check-input" type="checkbox" value="" id="isetf" @bind="isEtf">
+    </div>
+
+    <div class="col-xl-3 p-2">
+        <h6>Is actively traded:</h6>
+        <input class="form-check-input" type="checkbox" value="" id="isactivelytrading" @bind="isActivelyTrading">    
+    </div>
+
+    <div class="col-xl-3 p-2 ph_grid">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#demo">Details</button>
+    </div>
+
+    <div class="col-xl-3 p-2 ph_grid"></div>
+</div>
+
+<div id="demo" class="collapse">
+    <div class="row">
+        <div class="col-xl-3 p-2">
+            <h6>Market Cap more than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="marketCapMoreThan" placeholder="Enter number..." />
+        </div>
+  
+        <div class="col-xl-3 p-2">
+            <h6>Market Cap less than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="marketCapLowerThan" placeholder="Enter number..." />
+        </div>
+  
+        <div class="col-xl-3 p-2">
+            <h6>Price more than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="priceMoreThan" placeholder="Enter number..." />
+        </div>
+
+        <div class="col-xl-3 p-2">
+            <h6>Price less than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="priceLowerThan" placeholder="Enter number..." />
+        </div>
+  
+        <div class="col-xl-3 p-2">
+            <h6>Beta more than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="betaMoreThan" placeholder="Enter number..." />
+        </div>
+  
+        <div class="col-xl-3 p-2">
+            <h6>Beta less than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="betaLowerThan" placeholder="Enter number..." />
+        </div>
+  
+        <div class="col-xl-3 p-2">
+            <h6>Volume more than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="volumeMoreThan" placeholder="Enter number..." />
+        </div>
+    
+        <div class="col-xl-3 p-2">
+            <h6>Volume less than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="volumeLowerThan" placeholder="Enter number..." />
+        </div>
+      
+        <div class="col-xl-3 p-2">
+            <h6>Dividend more than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="dividendMoreThan" placeholder="Enter decimal number..." />
+        </div>    
+  
+        <div class="col-xl-3 p-2">
+            <h6>Dividend less than:</h6>
+            <input type="number" class="form-control form-input" @bind-value="dividendLowerThan" placeholder="Enter decimal number..." />
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-3 p-2">
+        <button type="submit" class="btn btn-primary" @onclick="GetCompanies">Search</button>
+    </div>
+</div>
+
+<hr />
+<br />
+
+@if (stocks == null)
+{
+    <p><em>Loading...</em></p>
+} else
+{
+    @foreach (var company in stocks)
+    {
+        <div class="container">
+            <div class="row row_v">
+                <div class="col-lg-10 cont_v">
+                    <div class="career-search mb-60">
+                        <div class="filter-result">
+                            <div class="job-box d-md-flex align-items-center justify-content-between">
+                                <div class="job-left d-md-flex align-items-center flex-wrap">
+                                    <div class="temp-img">
+                                        <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                            <img src="@GetImageUrl(@company.symbol)" />
+                                        </div>
+                                    </div>
+                                    <div class="job-content">
+                                        <div class="header_ticker">
+                                            @company.symbol
+                                        </div>
+                                        <div class="company_details">
+                                            @company.companyName | @company.industry
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="@($"/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private Screener[]? stocks;
+
+    public double? marketCapMoreThan;
+    public double? marketCapLowerThan;
+
+    public double? priceMoreThan;
+    public double? priceLowerThan;
+
+    public int? betaMoreThan;
+    public int? betaLowerThan;
+
+    public double? volumeMoreThan;
+    public double? volumeLowerThan;
+
+    public int? dividendMoreThan;
+    public int? dividendLowerThan;
+
+    public bool isEtf = false;
+    public bool isActivelyTrading = true;
+
+    public string? sector;
+    public string? industry;
+    public string? country = "US";
+    public string? exchange = "NYSE";
+
+    protected override async Task OnInitializedAsync()
+    {
+        stocks = await Http.GetFromJsonAsync<Screener[]>("stock-screener?marketCapMoreThan=" + marketCapMoreThan + "&marketCapLowerThan=" + marketCapLowerThan + "&priceMoreThan=" + priceMoreThan + "&priceLowerThan=" + priceLowerThan + "&betaMoreThan=" + betaMoreThan + "&betaLowerThan=" + betaLowerThan + "&volumeMoreThan=" + volumeMoreThan + "&volumeLowerThan=" + volumeLowerThan + "&dividendMoreThan=" + dividendMoreThan + "&dividendLowerThan=" + dividendLowerThan + "&isEtf=" + isEtf + "&isActivelyTrading=" + isActivelyTrading + "&sector=" + sector + "&industry=" + industry + "&exchange=" + exchange + "&country=" + country + "&limit=100&apikey=" + fmpApiKey.myApiKey);
+    }
+
+    protected async Task GetCompanies()
+    {
+        stocks = await Http.GetFromJsonAsync<Screener[]>("stock-screener?isEtf="+ isEtf +"&isActivelyTrading="+ isActivelyTrading +"&sector="+ sector +"&industry="+ industry +"&exchange="+ exchange +"&country="+ country +"&marketCapMoreThan="+ marketCapMoreThan +"&marketCapLowerThan="+ marketCapLowerThan +"&priceMoreThan="+ priceMoreThan +"&priceLowerThan="+ priceLowerThan +"&betaMoreThan="+ betaMoreThan +"&betaLowerThan="+ betaLowerThan +"&volumeMoreThan="+ volumeMoreThan +"&volumeLowerThan="+ volumeLowerThan +"&dividendMoreThan="+ dividendMoreThan +"&dividendLowerThan="+ dividendLowerThan +"&apikey="+ fmpApiKey.myApiKey);
+        /*stocks = await Http.GetFromJsonAsync<Screener[]>("&marketCapMoreThan=" + marketCapMoreThan + "&marketCapLowerThan=" + marketCapLowerThan + "&priceMoreThan=" + priceMoreThan + "&priceLowerThan=" + priceLowerThan + "&betaMoreThan=" + betaMoreThan + "&betaLowerThan=" + betaLowerThan + "&volumeMoreThan=" + volumeMoreThan + "&volumeLowerThan=" + volumeLowerThan + "&dividendMoreThan=" + dividendMoreThan + "&dividendLowerThan=" + dividendLowerThan);*/
+    }
+
+    public class Screener
+    {
+        public string? symbol { get; set; }
+        public string? companyName { get; set; }
+        public float marketCap { get; set; }
+        public string? sector { get; set; }
+        public string? industry { get; set; }
+        public double beta { get; set; }
+        public double price { get; set; }
+        public double lastAnnualDividend { get; set; }
+        public float volume { get; set; }
+        public string? exchange { get; set; }
+        public string? exchangeShortName { get; set; }
+        public string? country { get; set; }
+        public bool isEtf { get; set; }
+        public bool isActivelyTrading { get; set; }
+    }
+
+    public class Sector
+    {
+        public string sectorName { get; set; }
+        public string sectorUrlPart { get; set; }
+    }
+
+    List<Sector> sectors = new List<Sector>
+    {
+        new Sector() { sectorName = "Consumer Cyclical", sectorUrlPart = "Consumer%20Cyclical" },
+        new Sector() { sectorName = "Energy", sectorUrlPart = "Energy" },
+        new Sector() { sectorName = "Technology", sectorUrlPart = "Technology" },
+        new Sector() { sectorName = "Industrials", sectorUrlPart = "Industrials" },
+        new Sector() { sectorName = "Financial Services", sectorUrlPart = "Financial%20Services" },
+        new Sector() { sectorName = "Basic Materials", sectorUrlPart = "Basic%20Materials" },
+        new Sector() { sectorName = "Communication Services", sectorUrlPart = "Communication%20Services" },
+        new Sector() { sectorName = "Consumer Defensive", sectorUrlPart = "Consumer%20Defensive" },
+        new Sector() { sectorName = "Healthcare", sectorUrlPart = "Healthcare" },
+        new Sector() { sectorName = "Real Estate", sectorUrlPart = "Real%20Estate" },
+        new Sector() { sectorName = "Utilities", sectorUrlPart = "Utilities" },
+        new Sector() { sectorName = "Industrial Goods", sectorUrlPart = "Industrial%20Goods" },
+        new Sector() { sectorName = "Financial", sectorUrlPart = "Financial" },
+        new Sector() { sectorName = "Services", sectorUrlPart = "Services" },
+        new Sector() { sectorName = "Conglomerates", sectorUrlPart = "Conglomerates" }
+    };
+
+    public class Industry
+    {
+        public string industryName { get; set; }
+        public string industryUrlPart { get; set; }
+    }
+
+    List<Industry> industries = new List<Industry>
+    {
+        new Industry() { industryName = "Autos", industryUrlPart = "Autos" },
+        new Industry() { industryName = "Banks", industryUrlPart = "Banks" },
+        new Industry() { industryName = "Banks Diversified", industryUrlPart = "Banks—Diversified" },
+        new Industry() { industryName = "Software", industryUrlPart = "Software" },
+        new Industry() { industryName = "Banks Regional", industryUrlPart = "Banks—Regional" },
+        new Industry() { industryName = "Beverages Alcoholic", industryUrlPart = "Beverages—Alcoholic" },
+        new Industry() { industryName = "Beverages Brewers", industryUrlPart = "Beverages—Brewers" },
+        new Industry() { industryName = "Beverages Non-Alcoholic", industryUrlPart = "Beverages—Non-Alcoholic" }
+    };
+
+    public class Exchange
+    {
+        public string exchangeName { get; set; }
+    }
+
+    List<Exchange> exchanges = new List<Exchange>
+    {
+        new Exchange() { exchangeName = "NYSE" },
+        new Exchange() { exchangeName = "NASDAQ" },
+        new Exchange() { exchangeName = "AMEX" },
+        new Exchange() { exchangeName = "EURONEXT" },
+        new Exchange() { exchangeName = "TSX" },
+        new Exchange() { exchangeName = "ETF" },
+        new Exchange() { exchangeName = "MUTUAL_FUND" }
+    };
+
+    public class Country
+    {
+        public string countryCode { get; set; }
+    }
+
+    List<Country> countries = new List<Country>
+    {
+        new Country() { countryCode = "US" },
+        new Country() { countryCode = "CA" },
+        new Country() { countryCode = "RU" },
+        new Country() { countryCode = "BM" },
+        new Country() { countryCode = "FR" },
+        new Country() { countryCode = "IL" },
+        new Country() { countryCode = "MX" },
+        new Country() { countryCode = "IE" },
+        new Country() { countryCode = "IN" },
+        new Country() { countryCode = "CN" },
+        new Country() { countryCode = "HK" },
+        new Country() { countryCode = "DE" },
+        new Country() { countryCode = "GB" },
+        new Country() { countryCode = "NL" },
+        new Country() { countryCode = "MY" },
+        new Country() { countryCode = "AU" },
+        new Country() { countryCode = "LU" },
+        new Country() { countryCode = "ZA" },
+        new Country() { countryCode = "SG" },
+        new Country() { countryCode = "SE" },
+        new Country() { countryCode = "KY" },
+        new Country() { countryCode = "TH" },
+        new Country() { countryCode = "KZ" },
+        new Country() { countryCode = "BR" },
+        new Country() { countryCode = "AE" },
+        new Country() { countryCode = "SA" },
+        new Country() { countryCode = "GG" },
+        new Country() { countryCode = "CY" },
+        new Country() { countryCode = "GR" },
+        new Country() { countryCode = "JP" },
+        new Country() { countryCode = "LI" },
+        new Country() { countryCode = "ID" },
+        new Country() { countryCode = "IT" },
+        new Country() { countryCode = "EG" },
+        new Country() { countryCode = "MC" },
+        new Country() { countryCode = "FI" },
+        new Country() { countryCode = "CH" },
+        new Country() { countryCode = "BE" },
+        new Country() { countryCode = "NO" },
+        new Country() { countryCode = "ES" },
+        new Country() { countryCode = "MO" },
+        new Country() { countryCode = "CL" },
+        new Country() { countryCode = "MT" },
+        new Country() { countryCode = "PL" },
+        new Country() { countryCode = "AT" },
+        new Country() { countryCode = "PT" },
+        new Country() { countryCode = "TR" },
+        new Country() { countryCode = "JE" },
+        new Country() { countryCode = "DK" },
+        new Country() { countryCode = "NZ" },
+        new Country() { countryCode = "VG" },
+        new Country() { countryCode = "PA" },
+        new Country() { countryCode = "IM" },
+        new Country() { countryCode = "MA" },
+        new Country() { countryCode = "TW" },
+        new Country() { countryCode = "RO" },
+        new Country() { countryCode = "AR" },
+        new Country() { countryCode = "QA" },
+        new Country() { countryCode = "KR" },
+        new Country() { countryCode = "AZ" },
+        new Country() { countryCode = "CR" },
+        new Country() { countryCode = "PR" },
+        new Country() { countryCode = "GI" },
+        new Country() { countryCode = "CO" },
+        new Country() { countryCode = "MN" },
+        new Country() { countryCode = "CK" },
+        new Country() { countryCode = "VN" },
+        new Country() { countryCode = "UY" },
+        new Country() { countryCode = "MU" },
+        new Country() { countryCode = "PH" },
+        new Country() { countryCode = "ZM" },
+        new Country() { countryCode = "IS" },
+        new Country() { countryCode = "UA" },
+        new Country() { countryCode = "BG" },
+        new Country() { countryCode = "BS" },
+        new Country() { countryCode = "PG" },
+        new Country() { countryCode = "PE" },
+        new Country() { countryCode = "SK" },
+        new Country() { countryCode = "LT" },
+        new Country() { countryCode = "DO" },
+        new Country() { countryCode = "KH" },
+        new Country() { countryCode = "TC" },
+        new Country() { countryCode = "CW" },
+        new Country() { countryCode = "FK" },
+        new Country() { countryCode = "VI" },
+        new Country() { countryCode = "EE" },
+        new Country() { countryCode = "JO" },
+        new Country() { countryCode = "BD" },
+        new Country() { countryCode = "NG" },
+        new Country() { countryCode = "AI" },
+        new Country() { countryCode = "GA" },
+        new Country() { countryCode = "GE" },
+        new Country() { countryCode = "TG" },
+        new Country() { countryCode = "SN" },
+        new Country() { countryCode = "BB" }
+    };
+
+    
+    private string GetImageUrl(string ticker)
+    {
+        return "https://financialmodelingprep.com/image-stock/"+ticker+".png";
+    }
+}

@@ -1,0 +1,88 @@
+﻿@inject HttpClient Http
+@inject ApiKey fmpApiKey
+
+@if (sheets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Reported Currency</th>
+                <th>Total Investments</th>
+                <th>Total Debt</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sheet in sheets)
+            {
+                <tr>
+                    <td>@sheet.Date.ToShortDateString()</td>
+                    <td>@sheet.reportedCurrency</td>
+                    <td>@sheet.totalInvestments.ToString("c")</td>
+                    <td>@sheet.totalDebt.ToString("c")</td>
+                    <td><a href="@sheet.finalLink" class="nav-link">Final Link</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public string? tickerName { get; set; }
+
+    private Report[]? sheets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        sheets = await Http.GetFromJsonAsync<Report[]>("balance-sheet-statement/" + tickerName + "?limit=120&apikey=" + fmpApiKey.myApiKey);
+    }
+
+    public class Report
+    {
+        public DateTime Date { get; set; }
+        public string? symbol { get; set; }
+        public string? reportedCurrency { get; set; }
+        public string? cik { get; set; }
+        public string? fillingDate { get; set; }
+        public string? acceptedDate { get; set; }
+        public string? calendarYear { get; set; }
+        public string? period { get; set; }
+        public double cashAndCashEquivalents { get; set; }
+        public double shortTermInvestments { get; set; }
+        public double cashAndShortTermInvestments { get; set; }
+        public double netReceivables { get; set; }
+        public double inventory { get; set; }
+        public double otherCurrentAssets { get; set; }
+        public double totalCurrentAssets { get; set; }
+        public double propertyPlantEquipmentNet { get; set; }
+        public double goodwill { get; set; }
+        public double intangibleAssets { get; set; }
+        public double longTermInvestments { get; set; }
+        public double totalAssets { get; set; }
+        public double shortTermDebt { get; set; }
+        public double otherCurrentLiabilities { get; set; }
+        public double totalCurrentLiabilities { get; set; }
+        public double longTermDebt { get; set; }
+        public double otherNonCurrentLiabilities { get; set; }
+        public double totalNonCurrentLiabilities { get; set; }
+        public double otherLiabilities { get; set; }
+        public double totalLiabilities { get; set; }
+        public double retainedEarnings { get; set; }
+        public double othertotalStockholdersEquity { get; set; }
+        public double totalStockholdersEquity { get; set; }
+        public double totalLiabilitiesAndStockholdersEquity { get; set; }
+        public double totalEquity { get; set; }
+        public double totalLiabilitiesAndTotalEquity { get; set; }
+        public double totalInvestments { get; set; }
+        public double totalDebt { get; set; }
+        public double netDebt { get; set; }
+        public string? link { get; set; }
+        public string? finalLink { get; set; }
+    }
+}
