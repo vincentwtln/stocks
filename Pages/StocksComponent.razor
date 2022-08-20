@@ -110,7 +110,7 @@ else
 
     protected async Task GetCompanies()
     {
-        companies = await Http.GetFromJsonAsync<SearchItems[]>("search?query=" + SearchTerm + "&exchange=NASDAQ&apikey=" + fmpApiKey.myApiKey);
+        companies = await Http.GetFromJsonAsync<SearchItems[]>("search?query=" + SearchTerm + "&apikey=" + fmpApiKey.myApiKey);
     }
 
     public class StatementList
