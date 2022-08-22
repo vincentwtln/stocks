@@ -45,7 +45,7 @@ else
                 <div class="grid-item-list">
                     <ul>
                         <li>EPS: @stockprices.First().eps.ToString("f2")</li>
-                        <li>PE: @stockprices.First().pe.ToString("f2")</li>
+                        <li>PE: @stockprices.First().pe.ToString()</li>
                         <li>Shares Outstanding: @stockprices.First().sharesOutstanding.ToString("n2")</li>
                         <li>Exchange: @stockprices.First().exchange</li>
                     </ul>
@@ -158,7 +158,7 @@ else
         public double volume { get; set; }
         public string? exchange { get; set; }
         public double eps { get; set; }
-        public double pe { get; set; }
+        public double? pe { get; set; }
         public double sharesOutstanding { get; set; }
         public double newMarketCap => marketCap / 1000;
     }
