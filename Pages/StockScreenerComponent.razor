@@ -3,6 +3,8 @@
 @inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
 
+<PageTitle>Screener - IDPA Aktienanalyse</PageTitle>
+
 <PageHeader HeaderTitle="Screener"></PageHeader>
 <br />
 
@@ -161,7 +163,7 @@
                                     </div>
                                 </div>
                                 <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Details</a>
+                                    <a href="@($"/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Details</a>
                                 </div>
                             </div>
                         </div>

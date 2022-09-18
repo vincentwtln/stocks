@@ -1,4 +1,10 @@
-﻿.content-table {
+﻿@media only screen and (max-width: 1320px) {
+    .job-box .temp-img {
+        display: none;
+    }
+}
+
+.content-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -156,11 +162,3 @@ ul {
         box-shadow: none;
         border: none;
     }
-
-/*-------------------------------------------------------------------------------------------*/
-
-@media only screen and (max-width: 1320px) {
-    .job-box .temp-img {
-        display: none;
-    }
-}
