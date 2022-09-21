@@ -115,7 +115,7 @@
     .tabs ul li label {
         font-weight: bold;
         font-size: 18px;
-        color: #428BFF;
+        color: var(--signature-blue);
     }
 
     .tabs ul {
@@ -140,7 +140,7 @@
             .tabs ul li label {
                 transition: all 0.3s ease-in-out;
                 color: #929daf;
-                padding: 5px auto;
+                padding: 5px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: block;
@@ -187,7 +187,7 @@
             max-width: 100%;
             margin: 0 auto;
             height: 4px;
-            background: #428BFF;
+            background: var(--signature-blue);
             border-radius: 1px;
         }
 
@@ -211,7 +211,7 @@
         }
 
             .tabs .content section h2 {
-                color: #428BFF;
+                color: var(--signature-blue);
                 display: none;
             }
 
@@ -221,18 +221,18 @@
                     display: block;
                     width: 30px;
                     height: 3px;
-                    background: #428BFF;
+                    background: var(--signature-blue);
                     margin-top: 5px;
                     left: 1px;
                 }
 
     .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
         cursor: default;
-        color: #428BFF;
+        color: var(--signature-blue);
     }
 
         .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
-            fill: #428BFF;
+            fill: var(--signature-blue);
         }
 
 @media (max-width: 600px) {
@@ -251,11 +251,11 @@
 
 .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
     cursor: default;
-    color: #428BFF;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
-        fill: #428BFF;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -274,11 +274,11 @@
 
 .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
     cursor: default;
-    color: #428BFF;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
-        fill: #428BFF;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -297,11 +297,11 @@
 
 .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
     cursor: default;
-    color: #428BFF;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
-        fill: #428BFF;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -379,11 +379,6 @@
         }
 }
 
-color: #333;
-font-family: "Raleway";
-height: 100%;
-}
-
 .tabs {
     left: 50%;
     transform: translateX(-50%);
@@ -404,10 +399,10 @@ height: 100%;
 
     .tabs .content section h2,
     .tabs ul li label {
-        font-family: "Montserrat";
+        /*font-family: "Montserrat";*/
         font-weight: bold;
         font-size: 18px;
-        color: #428BFF;
+        color: var(--signature-blue);
     }
 
     .tabs ul {
@@ -432,7 +427,7 @@ height: 100%;
             .tabs ul li label {
                 transition: all 0.3s ease-in-out;
                 color: #929daf;
-                padding: 5px auto;
+                padding: 5px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: block;
@@ -479,7 +474,7 @@ height: 100%;
             max-width: 100%;
             margin: 0 auto;
             height: 4px;
-            background: #428BFF;
+            background: var(--signature-blue);
             border-radius: 1px;
         }
 
@@ -503,7 +498,7 @@ height: 100%;
         }
 
             .tabs .content section h2 {
-                color: #428BFF;
+                color: var(--signature-blue);
                 display: none;
             }
 
@@ -513,18 +508,18 @@ height: 100%;
                     display: block;
                     width: 30px;
                     height: 3px;
-                    background: #428BFF;
+                    background: var(--signature-blue);
                     margin-top: 5px;
                     left: 1px;
                 }
 
     .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
         cursor: default;
-        color: #428BFF;
+        color: var(--signature-blue);
     }
 
         .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
-            fill: #428BFF;
+            fill: var(--signature-blue);
         }
 
 @media (max-width: 600px) {
@@ -543,11 +538,11 @@ height: 100%;
 
 .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
     cursor: default;
-    color: #428BFF;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
-        fill: #428BFF;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -566,11 +561,11 @@ height: 100%;
 
 .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
     cursor: default;
-    color: #428BFF;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
-        fill: #428BFF;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -589,11 +584,11 @@ height: 100%;
 
 .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
     cursor: default;
-    color: #428BFF;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
-        fill: #428BFF;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {

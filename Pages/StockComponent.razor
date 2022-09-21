@@ -5,7 +5,7 @@
 
 <style>
     .e-tab .e-tab-header .e-toolbar-item.e-active {
-        background: #4B4E6D;
+        background: var(--signature-blue);
     }
 
     .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover {
@@ -105,7 +105,7 @@ else
                 <ChartZoomSettings EnableMouseWheelZooming="true" EnablePinchZooming="true" EnableSelectionZooming="true"></ChartZoomSettings>
                 <ChartCrosshairSettings Enable="true"></ChartCrosshairSettings>
                 <ChartSeriesCollection>
-                    <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#428BFF"></ChartSeries>
+                    <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#4E5BED"></ChartSeries>
                 </ChartSeriesCollection>
             </SfChart>
         </div>

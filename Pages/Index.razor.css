@@ -1,11 +1,4 @@
-﻿.homeImage {
-    max-width: 100%;
-    height: auto;
-    border-radius: .5rem;
-    opacity: 0.8;
-}
-
-.basic-info {
+﻿.basic-info {
     margin: 3rem;
     align-items: center;
     display: flex;
@@ -14,5 +7,9 @@
 }
 
     .basic-info h6 {
-        color: #428BFF;
+        color: var(--signature-blue);
     }
+
+.imageContainer {
+    max-width: 90%;
+}

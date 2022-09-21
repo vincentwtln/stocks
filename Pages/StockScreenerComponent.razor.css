@@ -164,10 +164,6 @@ ul {
     width: 100%;
 }
 
-.row_v {
-    width: 100%;
-}
-
 @media only screen and (max-width: 1140px) {
     .ph_grid {
         display: none;

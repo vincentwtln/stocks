@@ -1,7 +1,6 @@
 ﻿.body-test {
-    width: 80vw;
-    margin-right: auto;
-    margin-left: auto;
+    /*width: 80vw;*/
+    margin: auto auto;
 }
 
 a {
