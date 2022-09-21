@@ -5,6 +5,7 @@
 
 <PageTitle>Screener - IDPA Aktienanalyse</PageTitle>
 
+<div class="container-fluid" style="width: 80%;">
 <PageHeader HeaderTitle="Screener"></PageHeader>
 <br />
 
@@ -163,7 +164,7 @@
                                     </div>
                                 </div>
                                 <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Details</a>
+                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Detsails</a>
                                 </div>
                             </div>
                         </div>
@@ -173,6 +174,7 @@
         </div>
     }
 }
+</div>
 
 @code {
     private Screener[]? stocks;
