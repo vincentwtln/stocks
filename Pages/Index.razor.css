@@ -1,15 +1,20 @@
-﻿.basic-info {
-    margin: 3rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+﻿.hero {
+    background-color: #074f57;
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6) ), url("https://upload.wikimedia.org/wikipedia/commons/e/ea/NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg");
+    background-size: cover;
+    color: white;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
 }
 
-    .basic-info h6 {
-        color: var(--signature-blue);
-    }
+.container_bg {
+    max-width: 47rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
-.imageContainer {
-    max-width: 90%;
+.subtext {
+    margin-top: 3rem;
 }
