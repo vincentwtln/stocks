@@ -22,20 +22,69 @@
     margin-top: 3rem;
 }
 /* /Pages/StockComponent.razor.rz.scp.css */
-.listcontainer[b-97ugh5n71c] {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+@media only screen and (max-width: 1200px) {
+
+    .body-containerwidth[b-97ugh5n71c] {
+        width: 100%;
+    }
+
+    .center-price[b-97ugh5n71c] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .ionawdpo[b-97ugh5n71c] {
+        display: flex;
+        align-items: baseline;
+    }
+
+        .ionawdpo h2[b-97ugh5n71c] {
+            padding-right: .75rem;
+        }
+
+    .center-titlename[b-97ugh5n71c] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.listsubcontainer[b-97ugh5n71c] {
-    display: flex;
-    justify-content: start;
-    align-items: start;
+@media only screen and (min-width: 1200px) {
+
+    .body-containerwidth[b-97ugh5n71c] {
+        width: 80%;
+    }
+
+    .ionawdpo[b-97ugh5n71c] {
+        display: flex;
+        align-items: baseline;
+    }
+
+        .ionawdpo h2[b-97ugh5n71c] {
+            padding-right: .75rem;
+        }
 }
 
+.comp-img[b-97ugh5n71c] {
+    margin: 1rem;
+}
+
+.comp-name[b-97ugh5n71c] {
+    font-size: 2rem;
+}
+
+.container-2[b-97ugh5n71c] {
+    margin-bottom: .5rem;
+}
+
+/* --------------------------------- */
 .check-list[b-97ugh5n71c] {
     margin: 0;
     padding-left: 0rem;
+    width: 100%;
 }
 
     .check-list li[b-97ugh5n71c] {
@@ -47,15 +96,6 @@
 
     .check-list a[b-97ugh5n71c] {
         color: black;
-    }
-
-.ionawdpo[b-97ugh5n71c] {
-    display: flex;
-    align-items: baseline;
-}
-
-    .ionawdpo h2[b-97ugh5n71c] {
-        padding-right: .75rem;
     }
 
 .svg-icon[b-97ugh5n71c] {
@@ -78,45 +118,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.grid-container[b-97ugh5n71c] {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 80px auto;
-}
-
-.grid-item-image[b-97ugh5n71c] {
-    display: table-cell;
-    vertical-align: middle;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.grid-item-text[b-97ugh5n71c] {
-    display: table-cell;
-    vertical-align: middle;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
-}
-
-.grid-container-list[b-97ugh5n71c] {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: auto auto;
-}
-
-.grid-item-list[b-97ugh5n71c] {
-    display: table-cell;
-    vertical-align: middle;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
 }
 
 /*------------------------------------------------------------*/
@@ -1029,28 +1030,36 @@ ul[b-4onki790be] {
     }
 }
 /* /Pages/TestPage.razor.rz.scp.css */
+.details_test[b-7nbww4n8pp] {
+    
+}
 /* /Shared/Data/DetailTabsComponent.razor.rz.scp.css */
-.listcontainer[b-lcf9scdcyw] {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+@media only screen and (max-width: 1200px) {
+    table[b-lcf9scdcyw] {
+        font-size: .8rem;
+    }
+
+    ol[b-lcf9scdcyw], p[b-lcf9scdcyw] {
+        font-size: .9rem;
+    }
 }
 
-.listsubcontainer[b-lcf9scdcyw] {
-    display: flex;
-    justify-content: start;
-    align-items: start;
+@media only screen and (min-width: 1200px) {
+    table[b-lcf9scdcyw] {
+        font-size: 1rem;
+    }
 }
 
 .check-list[b-lcf9scdcyw] {
     margin: 0;
-    padding-left: 1.2rem;
+    padding-left: .1rem;
 }
 
     .check-list li[b-lcf9scdcyw] {
         position: relative;
         list-style-type: none;
-        padding-left: 2.5rem;
-        margin-bottom: 0.3rem;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
         .check-list li[b-lcf9scdcyw]:before {
@@ -1086,8 +1095,8 @@ ul[b-4onki790be] {
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    padding: 50px;
-    width: 90%;
+    padding: .8rem;
+    width: 95%;
     height: auto;
     min-width: 240px;
 }
