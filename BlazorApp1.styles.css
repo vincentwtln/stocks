@@ -1796,26 +1796,16 @@ height: 100%;[b-lcf9scdcyw]
 
 a[b-jbp68fio6o] {
     text-decoration: none;
-}
-
-.wrapper a:visited .fab[b-jbp68fio6o] {
     color: black;
 }
-.wrapper a:visited .facebook:hover .fab[b-jbp68fio6o] {
-    color: white;
-}
-.wrapper a:visited .twitter:hover .fab[b-jbp68fio6o] {
-    color: white;
-}
-.wrapper a:visited .youtube:hover .fab[b-jbp68fio6o] {
-    color: white;
-}
-.wrapper a:visited .instagram:hover .fab[b-jbp68fio6o] {
-    color: white;
-}
+
+    a:visited[b-jbp68fio6o] {
+        color: black;
+    }
 
 .wrapper[b-jbp68fio6o] {
     padding-top: 3rem;
+    color: black;
     padding-bottom: 3rem;
     display: flex;
     justify-content: center;
@@ -1826,6 +1816,7 @@ a[b-jbp68fio6o] {
     .wrapper .icon[b-jbp68fio6o] {
         position: relative;
         background: #ffffff;
+        color: black;
         border-radius: 50%;
         padding: 15px;
         margin: 10px;
