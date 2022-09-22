@@ -56,6 +56,34 @@
         }
 }
 
+::deep .nav-active .svg-icon path {
+    fill: var(--signature-blue);
+    color: var(--signature-blue);
+    font-style: normal;
+}
+
+::deep .nav-active {
+    /*border-bottom: 2px solid var(--signature-blue);*/
+}
+
+    ::deep .nav-active .svg-icon {
+        border-bottom: 2px solid var(--signature-blue);
+        height: 40px;
+    }
+
+.check-list {
+    margin: 0;
+    padding-left: 0rem;
+    width: 100%;
+    display: flex;
+}
+
+    .check-list li {
+        position: relative;
+        list-style-type: none;
+        padding-left: .3rem;
+    }
+
 #title {
     width: 100%;
 }
@@ -153,8 +181,8 @@ footer {
 }
 
 .svg-icon {
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.3em;
+    height: 2em;
     margin: .3rem;
 }
 
