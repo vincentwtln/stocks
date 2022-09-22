@@ -1906,6 +1906,25 @@ a[b-jbp68fio6o] {
     }
 /* /Shared/StocksNavMenu.razor.rz.scp.css */
 @media only screen and (max-width: 600px) {
+
+    header[b-pw9634ejot] {
+        width: 100%;
+        height: 6rem;
+        top: 0;
+        z-index: 1;
+        margin-bottom: 0rem;
+    }
+
+        header > div[b-pw9634ejot] {
+            width: calc(100% - 3rem);
+            max-width: 47rem;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
     
     #title[b-pw9634ejot] {
         display: none;
@@ -1923,22 +1942,26 @@ a[b-jbp68fio6o] {
     }
 }
 
-header[b-pw9634ejot] {
-    width: 100%;
-    height: 8rem;
-    top: 0;
-    z-index: 1;
-    margin-bottom: 3rem;
-}
-
-    header > div[b-pw9634ejot] {
-        width: calc(100% - 3rem);
-        max-width: 800px;
-        height: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
+@media only screen and (min-width: 600px) {
+    header[b-pw9634ejot] {
+        width: 100%;
+        height: 8rem;
+        top: 0;
+        z-index: 1;
+        margin-bottom: 1rem;
     }
+
+        header > div[b-pw9634ejot] {
+            width: calc(100% - 3rem);
+            max-width: 47rem;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+}
 
 #title[b-pw9634ejot] {
     width: 100%;
