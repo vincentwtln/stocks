@@ -67,42 +67,82 @@
                 <h5>@profiles.First().companyName</h5>
                 <hr />
 
-                <div class="listcontainer">
-                    <div class="listsubcontainer">
+                <div class="row fgeannuin">
+                    <div class="col-xl-6">
                         <ol class="check-list">
                             <li>
                                 CEO: @profiles.First().ceo
                             </li>
+                        </ol>
+                    </div>
+                        <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 Sector: @profiles.First().sector
                             </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 Industry: @profiles.First().industry
                             </li>
+                        </ol>
+                    </div>
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 Full Time Employees: @profiles.First().fullTimeEmployees
                             </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 IPO Date: @profiles.First().ipoDate
                             </li>
                         </ol>
                     </div>
-                    <div class="listsubcontainer">
-                        <ol class="check-list">   
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 Address: @profiles.First().address
                             </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 City: @profiles.First().city, @profiles.First().state @profiles.First().zip 
                             </li>
+                        </ol>
+                    </div>
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 Country: @profiles.First().country
                             </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
                                 Phone: <a href="tel:@profiles.First().phone">+@profiles.First().phone</a>
                             </li>
+                        </ol>
+                    </div>
+                        <div class="col-xl-6">
+                        <ol class="check-list">
                             <li>
-                                Official Website: <a href="@profiles.First().website" target="_blank">@profiles.First().website</a>
+                                Official Website: <a href="@profiles.First().website" target="_blank">@profiles.First().companyName</a>
                             </li>
                         </ol>
                     </div>
@@ -118,7 +158,6 @@
         </section>
 
         <section>
-            
             <div class="table-responsive container">
                 <div class="h3">Income Statement</div>
                 <table class="table table-bordered table-hover table-striped caption-top">
@@ -372,7 +411,6 @@
         </section>
 
         <section>
-            <h2>Balance Sheet</h2>
             <div class="table-responsive container">
                 <div class="h3">Balance Sheet</div>
                 <table class="table table-bordered table-hover table-striped caption-top">

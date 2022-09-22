@@ -1,17 +1,66 @@
-﻿.listcontainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+﻿@media only screen and (max-width: 1200px) {
+
+    .body-containerwidth {
+        width: 100%;
+    }
+
+    .center-price {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .ionawdpo {
+        display: flex;
+        align-items: baseline;
+    }
+
+        .ionawdpo h2 {
+            padding-right: .75rem;
+        }
+
+    .center-titlename {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.listsubcontainer {
-    display: flex;
-    justify-content: start;
-    align-items: start;
+@media only screen and (min-width: 1200px) {
+
+    .body-containerwidth {
+        width: 80%;
+    }
+
+    .ionawdpo {
+        display: flex;
+        align-items: baseline;
+    }
+
+        .ionawdpo h2 {
+            padding-right: .75rem;
+        }
 }
 
+.comp-img {
+    margin: 1rem;
+}
+
+.comp-name {
+    font-size: 2rem;
+}
+
+.container-2 {
+    margin-bottom: .5rem;
+}
+
+/* --------------------------------- */
 .check-list {
     margin: 0;
     padding-left: 0rem;
+    width: 100%;
 }
 
     .check-list li {
@@ -23,15 +72,6 @@
 
     .check-list a {
         color: black;
-    }
-
-.ionawdpo {
-    display: flex;
-    align-items: baseline;
-}
-
-    .ionawdpo h2 {
-        padding-right: .75rem;
     }
 
 .svg-icon {
@@ -54,45 +94,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.grid-container {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 80px auto;
-}
-
-.grid-item-image {
-    display: table-cell;
-    vertical-align: middle;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.grid-item-text {
-    display: table-cell;
-    vertical-align: middle;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
-}
-
-.grid-container-list {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: auto auto;
-}
-
-.grid-item-list {
-    display: table-cell;
-    vertical-align: middle;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
 }
 
 /*------------------------------------------------------------*/

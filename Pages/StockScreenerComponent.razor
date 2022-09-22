@@ -151,8 +151,8 @@
         <button type="submit" class="btn btn-primary" @onclick="GetCompanies">Search</button>
     </div>
 </div>
-
 <hr />
+</div>
 <br />
 
 @if (stocks == null)
@@ -184,7 +184,7 @@
                                     </div>
                                 </div>
                                 <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-light">Get Detsails</a>
+                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-outline-dark">Get Details</a>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +194,6 @@
         </div>
     }
 }
-</div>
 
 @code {
     private Screener[]? stocks;

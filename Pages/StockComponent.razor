@@ -14,116 +14,137 @@
     .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text {
         color: white !important;
     }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #fafafa;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 
 <PageTitle>@ticker - IDPA Aktienanalyse</PageTitle>
 
-<div class="container-fluid" style="width: 80%;">
 @if (profiles == null || ratings == null || stockprices == null || reports == null || forecasts == null)
 {
     <p>Loading data...</p>
 }
 else
 {
-    <div class="row">
-        <div class="col-xl-6 p-1">
-            <div class="grid-container">
-                <div class="grid-item-image"><img src="@profiles.First().image" alt="Company Logo" width="65"/> </div>
-                <div class="grid-item-text"><h1>@profiles.First().companyName (@reports.First().symbol)</h1></div>
-            </div>
-            
-            <div class="ionawdpo">
-                <h2 style="@StyleForNumber(@reports.First().dcf,@stockprices.First().price);font-weight:bold">@stockprices.First().price.ToString("N2")</h2>
-                <h5 style="@StyleForNumber(@reports.First().dcf,@stockprices.First().price);font-weight:bold">@profiles.First().currency</h5>
-            </div>
+    <div class="body-containerwidth container-fluid justify-content-center align-items-center">
+        <div class="container-fluid container-1 justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="container-fluid">
+                        <div class="row container-2 d-flex justify-content-center align-items-center">
+                            <div class="col-xl-2">
+                                <div class="comp-img d-flex justify-content-center align-items-center">
+                                    <img src="@profiles.First().image" alt="Company Logo" width="90" />
+                                </div>
+                            </div>
+                            <div class="col-xl-10 center-titlename d-flex align-middle text-center">
+                                <div class="comp-name d-flex justify-content-center align-items-center align-middle">
+                                    @profiles.First().companyName (@reports.First().symbol)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 center-price">
+                                <div class="ionawdpo">
+                                    <h2 style="@StyleForNumber(@reports.First().dcf,@stockprices.First().price);font-weight:bold">@stockprices.First().price.ToString("N2")</h2>
+                                    <h5 style="@StyleForNumber(@reports.First().dcf,@stockprices.First().price);font-weight:bold">@profiles.First().currency</h5>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <ol class="check-list">
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            DCF: @reports.First().dcf.ToString("n2") @profiles.First().currency
+                                        </li>
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            Rating: @ratings.First().ratingRecommendation (Score: @ratings.First().ratingScore)
+                                        </li>
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            Market Cap (Thsd): @stockprices.First().newMarketCap.ToString("n2") @profiles.First().currency
+                                        </li>
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            Volume: @stockprices.First().volume.ToString("n2")
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
 
-            <hr />
-
-            <div class="listcontainer">
-                <div class="listsubcontainer">
-                    <ol class="check-list">
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            DCF: @reports.First().dcf.ToString("n2") @profiles.First().currency
-                        </li>
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            Rating: @ratings.First().ratingRecommendation (Score: @ratings.First().ratingScore)
-                        </li>
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            Market Cap (Thsd): @stockprices.First().newMarketCap.ToString("n2") @profiles.First().currency
-                        </li>
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            Volume: @stockprices.First().volume.ToString("n2")
-                        </li>
-                    </ol>
+                            <div class="col-xl-6">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <ol class="check-list">
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            EPS: @stockprices.First().eps.ToString("f2")
+                                        </li>
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            PE: @stockprices.First().pe.ToString()
+                                        </li>
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            Shares Outstanding: @stockprices.First().sharesOutstanding.ToString("n2")
+                                        </li>
+                                        <li>
+                                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                                <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+                                            </svg>
+                                            Exchange: @stockprices.First().exchange
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="listsubcontainer">
-                    <ol class="check-list">
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            EPS: @stockprices.First().eps.ToString("f2")
-                        </li>
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            PE: @stockprices.First().pe.ToString()
-                        </li>
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            Shares Outstanding: @stockprices.First().sharesOutstanding.ToString("n2")
-                        </li>
-                        <li>
-                            <svg class="svg-icon" viewBox="0 0 20 20">
-							    <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
-						    </svg>
-                            Exchange: @stockprices.First().exchange
-                        </li>
-                    </ol>
+                <div class="col-xl-6">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <SfChart Title="Price Chart" Width="100%" Height="100%" Background="#fafafa">
+                            <ChartPrimaryXAxis IntervalType="IntervalType.Auto" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime"></ChartPrimaryXAxis>
+                            <ChartPrimaryYAxis LabelFormat="c" />
+                            <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+                            <ChartZoomSettings EnableMouseWheelZooming="true" EnablePinchZooming="true" EnableSelectionZooming="true"></ChartZoomSettings>
+                            <ChartCrosshairSettings Enable="true"></ChartCrosshairSettings>
+                            <ChartSeriesCollection>
+                                <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#4E5BED"></ChartSeries>
+                            </ChartSeriesCollection>
+                        </SfChart>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-6 p-1">
-            <SfChart Title="Price Chart" Width="100%" Height="100%" Background="#EEE">
-                <ChartPrimaryXAxis IntervalType="IntervalType.Auto" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime"></ChartPrimaryXAxis>
-                <ChartPrimaryYAxis LabelFormat="c"/>
-                <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
-                <ChartZoomSettings EnableMouseWheelZooming="true" EnablePinchZooming="true" EnableSelectionZooming="true"></ChartZoomSettings>
-                <ChartCrosshairSettings Enable="true"></ChartCrosshairSettings>
-                <ChartSeriesCollection>
-                    <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#4E5BED"></ChartSeries>
-                </ChartSeriesCollection>
-            </SfChart>
         </div>
     </div>
-}
 
-<br />
-
-@if (profiles == null)
-{
-}
-else
-{
+    <br />
     <DetailTabsComponent tickerName="@ticker"></DetailTabsComponent>
 }
-</div>
-
 
 @code {
     [Parameter]
