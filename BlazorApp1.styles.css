@@ -1,18 +1,23 @@
 /* /Pages/Index.razor.rz.scp.css */
-.basic-info[b-94th9x7r8o] {
-    margin: 3rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.hero[b-94th9x7r8o] {
+    background-color: #074f57;
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6) ), url("https://upload.wikimedia.org/wikipedia/commons/e/ea/NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg");
+    background-size: cover;
+    color: white;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
 }
 
-    .basic-info h6[b-94th9x7r8o] {
-        color: var(--signature-blue);
-    }
+.container_bg[b-94th9x7r8o] {
+    max-width: 47rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
-.imageContainer[b-94th9x7r8o] {
-    max-width: 90%;
+.subtext[b-94th9x7r8o] {
+    margin-top: 3rem;
 }
 /* /Pages/StockComponent.razor.rz.scp.css */
 .listcontainer[b-97ugh5n71c] {
