@@ -198,9 +198,9 @@ footer {
     }
 
 .svghover:hover .svg-icon path {
-    fill: #4E5BED;
+    fill: var(--signature-blue);
 }
 
 .svghover:active .svg-icon path {
-    fill: #4E5BED;
+    fill: var(--signature-blue);
 }
