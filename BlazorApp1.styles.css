@@ -2102,11 +2102,11 @@ footer[b-pw9634ejot] {
     }
 
 .svghover:hover .svg-icon path[b-pw9634ejot] {
-    fill: #4E5BED;
+    fill: var(--signature-blue);
 }
 
 .svghover:active .svg-icon path[b-pw9634ejot] {
-    fill: #4E5BED;
+    fill: var(--signature-blue);
 }
 /* /Shared/_old/MainLayout.razor.rz.scp.css */
 .page[b-y8fdlcy15s] {
