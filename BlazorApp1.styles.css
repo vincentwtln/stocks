@@ -1068,7 +1068,7 @@ ul[b-4onki790be] {
             height: .6rem;
             border-width: 0 2px 2px 0;
             border-style: solid;
-            border-color: #4E5BED;
+            border-color: var(--signature-blue);
             transform-origin: bottom left;
             transform: rotate(45deg);
         }
@@ -1106,7 +1106,7 @@ ul[b-4onki790be] {
     .tabs ul li label[b-lcf9scdcyw] {
         font-weight: bold;
         font-size: 18px;
-        color: #4E5BED;
+        color: var(--signature-blue);
     }
 
     .tabs ul[b-lcf9scdcyw] {
@@ -1178,7 +1178,7 @@ ul[b-4onki790be] {
             max-width: 100%;
             margin: 0 auto;
             height: 4px;
-            background: #4E5BED;
+            background: var(--signature-blue);
             border-radius: 1px;
         }
 
@@ -1202,7 +1202,7 @@ ul[b-4onki790be] {
         }
 
             .tabs .content section h2[b-lcf9scdcyw] {
-                color: #4E5BED;
+                color: var(--signature-blue);
                 display: none;
             }
 
@@ -1212,18 +1212,18 @@ ul[b-4onki790be] {
                     display: block;
                     width: 30px;
                     height: 3px;
-                    background: #4E5BED;
+                    background: var(--signature-blue);
                     margin-top: 5px;
                     left: 1px;
                 }
 
     .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label[b-lcf9scdcyw] {
         cursor: default;
-        color: #4E5BED;
+        color: var(--signature-blue);
     }
 
         .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg[b-lcf9scdcyw] {
-            fill: #4E5BED;
+            fill: var(--signature-blue);
         }
 
 @media (max-width: 600px) {
@@ -1242,11 +1242,11 @@ ul[b-4onki790be] {
 
 .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label[b-lcf9scdcyw] {
     cursor: default;
-    color: #4E5BED;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg[b-lcf9scdcyw] {
-        fill: #4E5BED;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -1265,11 +1265,11 @@ ul[b-4onki790be] {
 
 .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label[b-lcf9scdcyw] {
     cursor: default;
-    color: #4E5BED;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg[b-lcf9scdcyw] {
-        fill: #4E5BED;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -1288,11 +1288,11 @@ ul[b-4onki790be] {
 
 .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label[b-lcf9scdcyw] {
     cursor: default;
-    color: #4E5BED;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg[b-lcf9scdcyw] {
-        fill: #4E5BED;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -1398,7 +1398,7 @@ height: 100%;[b-lcf9scdcyw]
         font-family: "Montserrat";
         font-weight: bold;
         font-size: 18px;
-        color: #4E5BED;
+        color: var(--signature-blue)
     }
 
     .tabs ul[b-lcf9scdcyw] {
@@ -1470,7 +1470,7 @@ height: 100%;[b-lcf9scdcyw]
             max-width: 100%;
             margin: 0 auto;
             height: 4px;
-            background: #4E5BED;
+            background: var(--signature-blue);
             border-radius: 1px;
         }
 
@@ -1494,7 +1494,7 @@ height: 100%;[b-lcf9scdcyw]
         }
 
             .tabs .content section h2[b-lcf9scdcyw] {
-                color: #4E5BED;
+                color: var(--signature-blue);
                 display: none;
             }
 
@@ -1504,18 +1504,18 @@ height: 100%;[b-lcf9scdcyw]
                     display: block;
                     width: 30px;
                     height: 3px;
-                    background: #4E5BED;
+                    background: var(--signature-blue);
                     margin-top: 5px;
                     left: 1px;
                 }
 
     .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label[b-lcf9scdcyw] {
         cursor: default;
-        color: #4E5BED;
+        color: var(--signature-blue);
     }
 
         .tabs input[name=tab-control]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg[b-lcf9scdcyw] {
-            fill: #4E5BED;
+            fill: var(--signature-blue);
         }
 
 @media (max-width: 600px) {
@@ -1534,11 +1534,11 @@ height: 100%;[b-lcf9scdcyw]
 
 .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label[b-lcf9scdcyw] {
     cursor: default;
-    color: #4E5BED;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg[b-lcf9scdcyw] {
-        fill: #4E5BED;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -1557,11 +1557,11 @@ height: 100%;[b-lcf9scdcyw]
 
 .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label[b-lcf9scdcyw] {
     cursor: default;
-    color: #4E5BED;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg[b-lcf9scdcyw] {
-        fill: #4E5BED;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
@@ -1580,11 +1580,11 @@ height: 100%;[b-lcf9scdcyw]
 
 .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label[b-lcf9scdcyw] {
     cursor: default;
-    color: #4E5BED;
+    color: var(--signature-blue);
 }
 
     .tabs input[name=tab-control]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg[b-lcf9scdcyw] {
-        fill: #4E5BED;
+        fill: var(--signature-blue);
     }
 
 @media (max-width: 600px) {
