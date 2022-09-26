@@ -34,20 +34,19 @@
             <div class="col-md-6">
                 <div class="form">
                     <input type="text" class="form-control form-input" @bind-value="SearchTerm" placeholder="Search anything..." />
-                    <button type="submit" class="btn btn-primary" @onclick="GetCompanies">Search</button>
+                    <button type="submit" class="testbuttonvinc" @onclick="GetCompanies">Search</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@if (companies == null || string.IsNullOrEmpty(SearchTerm))
-{
-   if (symbols == null)
-   {
-        <p><em>Loading...</em></p>
-    } else
-    {
+@if (companies == null || string.IsNullOrEmpty(SearchTerm)) {
+    if (symbols == null) {
+        <div class="container-fluid" style="width: 80%;">
+            <p><em>Loading...</em></p>
+        </div>
+    } else {
         @foreach (var company in symbols)
         {
             <div class="container">
@@ -72,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="job-right my-4 flex-shrink-0">
-                                        <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-outline-dark">Get Details</a>
+                                        <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -82,11 +81,8 @@
             </div>
         }
     }
-}
-else
-{
-    @foreach (var company in companies)
-    {
+} else {
+    @foreach (var company in companies) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 cont_v">
@@ -109,7 +105,7 @@ else
                                     </div>
                                 </div>
                                 <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-outline-dark">Get Details</a>
+                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
                                 </div>
                             </div>
                         </div>

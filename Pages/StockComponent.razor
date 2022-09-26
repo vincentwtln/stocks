@@ -5,7 +5,7 @@
 
 <style>
     .e-tab .e-tab-header .e-toolbar-item.e-active {
-        background: var(--signature-blue);
+        background: var(--signature-yellow);
     }
 
     .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover {
@@ -29,7 +29,9 @@
 
 @if (profiles == null || ratings == null || stockprices == null || reports == null || forecasts == null)
 {
-    <p>Loading data...</p>
+    <div class="container-fluid" style="width: 80%;">
+        <p><em>Loading...</em></p>
+    </div>
 }
 else
 {
@@ -133,7 +135,7 @@ else
                             <ChartZoomSettings EnableMouseWheelZooming="true" EnablePinchZooming="true" EnableSelectionZooming="true"></ChartZoomSettings>
                             <ChartCrosshairSettings Enable="true"></ChartCrosshairSettings>
                             <ChartSeriesCollection>
-                                <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#0D3B66"></ChartSeries>
+                                <ChartSeries DataSource="@forecasts.Historical" XName="date" YName="close" Type="ChartSeriesType.Line" Fill="#003566"></ChartSeries>
                             </ChartSeriesCollection>
                         </SfChart>
                     </div>

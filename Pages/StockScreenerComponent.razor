@@ -85,7 +85,8 @@
     </div>
 
     <div class="col-xl-3 p-2 ph_grid">
-        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#demo">Details</button>
+        <!--<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#demo">Details</button>-->
+        <button type="button" class="details-button" data-bs-toggle="collapse" data-bs-target="#demo">More Options</button>
     </div>
 
     <div class="col-xl-3 p-2 ph_grid"></div>
@@ -148,7 +149,7 @@
 
 <div class="row">
     <div class="col-xl-3 p-2">
-        <button type="submit" class="btn btn-primary" @onclick="GetCompanies">Search</button>
+        <button type="submit" class="search-button" @onclick="GetCompanies">Search</button>
     </div>
 </div>
 <hr />
@@ -157,7 +158,9 @@
 
 @if (stocks == null)
 {
-    <p><em>Loading...</em></p>
+    <div class="container-fluid" style="width: 80%;">
+        <p><em>Loading...</em></p>
+    </div>
 } else
 {
     @foreach (var company in stocks)
@@ -184,7 +187,7 @@
                                     </div>
                                 </div>
                                 <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block btn-outline-dark">Get Details</a>
+                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block stock-button">Get Details</a>
                                 </div>
                             </div>
                         </div>

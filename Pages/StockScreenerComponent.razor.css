@@ -1,4 +1,57 @@
-﻿.content-table {
+﻿.search-button {
+    border: 1px solid var(--signature-blue);
+    background-color: var(--signature-blue);
+    color: white;
+    padding: 2px 20px;
+    height: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.1s;
+    border-radius: 10px;
+}
+
+    .search-button:hover {
+        color: var(--signature-blue);
+        background-color: #fafafa;
+    }
+
+.stock-button {
+    border: 1px solid var(--signature-blue);
+    background-color: #fafafa;
+    color: var(--signature-blue);
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+}
+    .stock-button:hover {
+        color: #fafafa;
+        background-color: var(--signature-blue);
+    }
+
+.details-button {
+    border: 1px solid #8d99ae;
+    background-color: #8d99ae;
+    color: white;
+    padding: 2px 20px;
+    height: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.1s;
+    border-radius: 10px;
+}
+
+    .details-button:hover {
+        color: #8d99ae;
+        background-color: #fafafa;
+        border: 1px solid #8d99ae;
+    }
+
+.content-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -162,12 +215,6 @@ ul {
 
 .cont_v {
     width: 100%;
-}
-
-@media only screen and (max-width: 1140px) {
-    .ph_grid {
-        display: none;
-    }
 }
 
 @media only screen and (max-width: 1320px) {

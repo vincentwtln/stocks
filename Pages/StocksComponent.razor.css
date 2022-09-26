@@ -4,6 +4,40 @@
     }
 }
 
+.testbuttonvinc {
+    border: 1px solid var(--signature-blue);
+    background-color: var(--signature-blue);
+    color: white;
+    padding: 2px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.1s;
+    border-radius: 10px;
+}
+
+    .testbuttonvinc:hover {
+        color: var(--signature-blue);
+        background-color: #fafafa;
+    }
+
+.testbuttonvinc2 {
+    border: 1px solid var(--signature-blue);
+    background-color: #fafafa;
+    color: var(--signature-blue);
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+}
+
+    .testbuttonvinc2:hover {
+        color: #fafafa;
+        background-color: var(--signature-blue);
+    }
+
 .content-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -78,9 +112,6 @@ ul {
 .job-box .img-holder {
     height: 80px;
     width: 80px;
-    /*background-color: #4e63d7;
-    background-image: -webkit-gradient(linear, left top, right top, from(rgba(78, 99, 215, 0.9)), to(#5a85dd));
-    background-image: linear-gradient(to right, rgba(78, 99, 215, 0.9) 0%, #5a85dd 100%);*/
     color: #fff;
     font-size: 22px;
     font-weight: 700;
@@ -124,13 +155,6 @@ ul {
     margin: 1rem;
 }
 
-    .form .fa-search {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        color: #9ca3af;
-    }
-
     .form span {
         position: absolute;
         right: 17px;
@@ -148,7 +172,7 @@ ul {
     }
 
 .form-input {
-    height: 55px;
+    height: auto;
     text-indent: 10px;
     border-radius: 10px;
     margin-right: 10px;
@@ -156,5 +180,5 @@ ul {
 
     .form-input:focus {
         box-shadow: none;
-        border: none;
+        border: 1px solid var(--signature-blue);
     }
