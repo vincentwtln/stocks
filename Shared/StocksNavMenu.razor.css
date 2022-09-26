@@ -58,6 +58,21 @@
             padding-left: 1rem;
             padding-right: 1rem;
         }
+
+    main > figure:hover {
+        box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
+        transform: scale(1.02);
+    }
+
+    #folders > article:hover {
+        box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.1);
+        transform: scale(1.02);
+    }
+
+    .wrapper .icon:hover span,
+    .wrapper .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .navicon {
@@ -117,11 +132,6 @@ main, #folders {
         transition: all 100ms ease-out;
     }
 
-        main > figure:hover {
-            box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
-            transform: scale(1.02);
-        }
-
         main > figure:after {
             content: "";
             padding-bottom: 100%;
@@ -149,11 +159,6 @@ main, #folders {
         line-height: 4rem;
         transition: all 100ms ease-out;
     }
-
-        #folders > article:hover {
-            box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.1);
-            transform: scale(1.02);
-        }
 
 footer {
     width: 100%;
@@ -233,11 +238,6 @@ a {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-    }
-
-    .wrapper .icon:hover span,
-    .wrapper .icon:hover .tooltip {
-        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
     }
 
     .wrapper .icon:hover {
