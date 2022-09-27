@@ -3,7 +3,9 @@
 
 @if (statements == null)
 {
-    <p><em>Loading...</em></p>
+    <div class="container-fluid" style="width: 80%;">
+        <p><em>Loading...</em></p>
+    </div>
 }
 else
 {
@@ -18,8 +20,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var statement in statements)
-            {
+            <Virtualize Items="statements" Context="statement">
                 <tr>
                     <td>@statement.Date.ToShortDateString()</td>
                     <td>@statement.reportedCurrency</td>
@@ -27,7 +28,7 @@ else
                     <td>@statement.freeCashFlow.ToString("c")</td>
                     <td><a href="@statement.finalLink" class="nav-link">Final Link</a></td>
                 </tr>
-            }
+            </Virtualize>
         </tbody>
     </table>
 }

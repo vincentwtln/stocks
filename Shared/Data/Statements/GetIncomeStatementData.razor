@@ -18,8 +18,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var statement in statements)
-            {
+            <Virtualize Items="statements" Context="statement">
                 <tr>
                     <td>@statement.Date.ToShortDateString()</td>
                     <td>@statement.reportedCurrency</td>
@@ -27,7 +26,7 @@ else
                     <td>@statement.grossProfit.ToString("c")</td>
                     <td><a href="@statement.finalLink" class="nav-link">Final Link</a></td>
                 </tr>
-            }
+            </Virtualize>
         </tbody>
     </table>
 }

@@ -3,7 +3,9 @@
 
 @if (sheets == null)
 {
-    <p><em>Loading...</em></p>
+    <div class="container-fluid" style="width: 80%;">
+        <p><em>Loading...</em></p>
+    </div>
 }
 else
 {
@@ -18,8 +20,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var sheet in sheets)
-            {
+            <Virtualize Items="sheets" Context="sheet">
                 <tr>
                     <td>@sheet.Date.ToShortDateString()</td>
                     <td>@sheet.reportedCurrency</td>
@@ -27,7 +28,7 @@ else
                     <td>@sheet.totalDebt.ToString("c")</td>
                     <td><a href="@sheet.finalLink" class="nav-link">Final Link</a></td>
                 </tr>
-            }
+            </Virtualize>
         </tbody>
     </table>
 }

@@ -1,0 +1,22 @@
+﻿.navicon {
+    font-size: 23px;
+}
+
+.account-button {
+    border: 1px solid var(--signature-blue);
+    background-color: var(--signature-blue);
+    color: white;
+    padding: 7px 25px;
+    height: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.2s;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+    .account-button:hover {
+        color: var(--signature-blue);
+        background-color: #fafafa;
+    }

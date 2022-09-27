@@ -3,6 +3,8 @@
 @inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
 
+@attribute [Authorize]
+
 <PageTitle>Aktienliste - IDPA Aktienanalyse</PageTitle>
 
 <style>
@@ -47,8 +49,7 @@
             <p><em>Loading...</em></p>
         </div>
     } else {
-        @foreach (var company in symbols)
-        {
+        <Virtualize Items="symbols" Context="company">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 cont_v">
@@ -79,10 +80,10 @@
                     </div>
                 </div>
             </div>
-        }
+        </Virtualize>
     }
 } else {
-    @foreach (var company in companies) {
+    <Virtualize Items="companies" Context="company">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 cont_v">
@@ -113,7 +114,7 @@
                 </div>
             </div>
         </div>
-    }
+    </Virtualize>
 }
 
 @code {

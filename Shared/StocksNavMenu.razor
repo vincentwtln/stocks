@@ -76,40 +76,19 @@
                             </span>
                         </NavLink>
                     </div>
+                    <div class="nav-item @GetActive("account", NavLinkMatch.All)">
+                        <NavLink class="nav-link svghover" ActiveClass="nav-active" href="account" Match="NavLinkMatch.All">
+                            <span class="icon">
+                                <span class="tooltip">Account</span>
+                                <span class="svg-icon">
+                                    <i class="bi bi-person-bounding-box navicon"></i>
+                                </span>
+                            </span>
+                        </NavLink>
+                    </div>
+
                 </div>
             </div>
-            <!--
-            <div class="container-fluid d-flex justify-content-center align-items-center">
-                <div class="nav-item @GetActive("", NavLinkMatch.All)">
-                    <NavLink class="nav-link svghover" ActiveClass="nav-active" href="" Match="NavLinkMatch.All">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"></path>
-                        </svg>
-                    </NavLink>
-                </div>
-                <div class="nav-item @GetActive("stocks", NavLinkMatch.All)">
-                    <NavLink class="nav-link svghover" ActiveClass="nav-active" href="stocks" Match="NavLinkMatch.All">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path d="M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"></path>
-                        </svg>
-                    </NavLink>
-                </div>
-                <div class="nav-item @GetActive("screener", NavLinkMatch.All)">
-                    <NavLink class="nav-link svghover" ActiveClass="nav-active" href="screener" Match="NavLinkMatch.All">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"></path>
-                        </svg>
-                    </NavLink>
-                </div>
-                <div class="nav-item @GetActive("info", NavLinkMatch.All)">
-                    <NavLink class="nav-link svghover" ActiveClass="nav-active" href="info" Match="NavLinkMatch.All">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path d="M17.592,8.936l-6.531-6.534c-0.593-0.631-0.751-0.245-0.751,0.056l0.002,2.999L5.427,9.075H2.491c-0.839,0-0.162,0.901-0.311,0.752l3.683,3.678l-3.081,3.108c-0.17,0.171-0.17,0.449,0,0.62c0.169,0.17,0.448,0.17,0.618,0l3.098-3.093l3.675,3.685c-0.099-0.099,0.773,0.474,0.773-0.296v-2.965l3.601-4.872l2.734-0.005C17.73,9.688,18.326,9.669,17.592,8.936 M3.534,9.904h1.906l4.659,4.66v1.906L3.534,9.904z M10.522,13.717L6.287,9.48l4.325-3.124l3.088,3.124L10.522,13.717z M14.335,8.845l-3.177-3.177V3.762l5.083,5.083H14.335z"></path>
-                        </svg>
-                    </NavLink>
-                </div>
-            </div>
-            -->
         </article>
     </div>
 </header>

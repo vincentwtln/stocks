@@ -2,6 +2,7 @@
 @inject HttpClient Http
 @inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
+@attribute [Authorize]
 
 <PageTitle>Screener - IDPA Aktienanalyse</PageTitle>
 
@@ -85,7 +86,6 @@
     </div>
 
     <div class="col-xl-3 p-2 ph_grid">
-        <!--<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#demo">Details</button>-->
         <button type="button" class="details-button" data-bs-toggle="collapse" data-bs-target="#demo">More Options</button>
     </div>
 
@@ -163,6 +163,7 @@
     </div>
 } else
 {
+    @*
     @foreach (var company in stocks)
     {
         <div class="container">
@@ -196,6 +197,39 @@
             </div>
         </div>
     }
+    *@
+    <Virtualize Items="stocks" Context="company">
+        <div class="container">
+            <div class="row">
+                    <div class="col-lg-10 cont_v">
+                        <div class="career-search mb-60">
+                            <div class="filter-result">
+                                <div class="job-box d-md-flex align-items-center justify-content-between">
+                                    <div class="job-left d-md-flex align-items-center flex-wrap">
+                                        <div class="temp-img">
+                                            <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                                <img src="@GetImageUrl(@company.symbol)" />
+                                            </div>
+                                        </div>
+                                        <div class="job-content">
+                                            <div class="header_ticker">
+                                            @company.symbol
+                                            </div>
+                                            <div class="company_details">
+                                            @company.companyName | @company.industry
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="job-right my-4 flex-shrink-0">
+                                        <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block stock-button">Get Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </Virtualize>
 }
 
 @code {
@@ -232,7 +266,6 @@
     protected async Task GetCompanies()
     {
         stocks = await Http.GetFromJsonAsync<Screener[]>("stock-screener?isEtf="+ isEtf +"&isActivelyTrading="+ isActivelyTrading +"&sector="+ sector +"&industry="+ industry +"&exchange="+ exchange +"&country="+ country +"&marketCapMoreThan="+ marketCapMoreThan +"&marketCapLowerThan="+ marketCapLowerThan +"&priceMoreThan="+ priceMoreThan +"&priceLowerThan="+ priceLowerThan +"&betaMoreThan="+ betaMoreThan +"&betaLowerThan="+ betaLowerThan +"&volumeMoreThan="+ volumeMoreThan +"&volumeLowerThan="+ volumeLowerThan +"&dividendMoreThan="+ dividendMoreThan +"&dividendLowerThan="+ dividendLowerThan +"&apikey="+ fmpApiKey.myApiKey);
-        /*stocks = await Http.GetFromJsonAsync<Screener[]>("&marketCapMoreThan=" + marketCapMoreThan + "&marketCapLowerThan=" + marketCapLowerThan + "&priceMoreThan=" + priceMoreThan + "&priceLowerThan=" + priceLowerThan + "&betaMoreThan=" + betaMoreThan + "&betaLowerThan=" + betaLowerThan + "&volumeMoreThan=" + volumeMoreThan + "&volumeLowerThan=" + volumeLowerThan + "&dividendMoreThan=" + dividendMoreThan + "&dividendLowerThan=" + dividendLowerThan);*/
     }
 
     public class Screener
@@ -255,8 +288,8 @@
 
     public class Sector
     {
-        public string sectorName { get; set; }
-        public string sectorUrlPart { get; set; }
+        public string? sectorName { get; set; }
+        public string? sectorUrlPart { get; set; }
     }
 
     List<Sector> sectors = new List<Sector>
@@ -280,8 +313,8 @@
 
     public class Industry
     {
-        public string industryName { get; set; }
-        public string industryUrlPart { get; set; }
+        public string? industryName { get; set; }
+        public string? industryUrlPart { get; set; }
     }
 
     List<Industry> industries = new List<Industry>
@@ -298,7 +331,7 @@
 
     public class Exchange
     {
-        public string exchangeName { get; set; }
+        public string? exchangeName { get; set; }
     }
 
     List<Exchange> exchanges = new List<Exchange>
@@ -314,7 +347,7 @@
 
     public class Country
     {
-        public string countryCode { get; set; }
+        public string? countryCode { get; set; }
     }
 
     List<Country> countries = new List<Country>
