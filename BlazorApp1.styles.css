@@ -2002,6 +2002,10 @@ a[b-jbp68fio6o] {
 /* /Shared/StocksNavMenu.razor.rz.scp.css */
 @media only screen and (max-width: 600px) {
 
+    .navicon[b-pw9634ejot] {
+        font-size: 100%;
+    }
+
     header[b-pw9634ejot] {
         width: 100%;
         height: 6rem;
@@ -2036,12 +2040,38 @@ a[b-jbp68fio6o] {
         font-size: 1em;
     }
 
-    .wrapper .tooltip[b-pw9634ejot] {
-        display: none;
+    .wrapper[b-pw9634ejot] {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
     }
+
+        .wrapper .icon[b-pw9634ejot] {
+            position: relative;
+            color: black;
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wrapper .tooltip[b-pw9634ejot] {
+            display: none;
+        }
 }
 
 @media only screen and (min-width: 600px) {
+
+    .navicon[b-pw9634ejot] {
+        font-size: 23px;
+    }
+
     header[b-pw9634ejot] {
         width: 100%;
         height: 8rem;
@@ -2071,14 +2101,33 @@ a[b-jbp68fio6o] {
         transform: scale(1.02);
     }
 
+    .wrapper[b-pw9634ejot] {
+        padding-top: 3rem;
+        color: black;
+        padding-bottom: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .wrapper .icon[b-pw9634ejot] {
+            position: relative;
+            color: black;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
     .wrapper .icon:hover span[b-pw9634ejot],
     .wrapper .icon:hover .tooltip[b-pw9634ejot] {
         text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
     }
-}
-
-.navicon[b-pw9634ejot] {
-    font-size: 23px;
 }
 
 #title[b-pw9634ejot] {
@@ -2187,29 +2236,6 @@ a[b-pw9634ejot] {
 
     a:visited[b-pw9634ejot] {
         color: black;
-    }
-
-.wrapper[b-pw9634ejot] {
-    padding-top: 3rem;
-    color: black;
-    padding-bottom: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .wrapper .icon[b-pw9634ejot] {
-        position: relative;
-        color: black;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        cursor: pointer;
-        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     .wrapper .tooltip[b-pw9634ejot] {
