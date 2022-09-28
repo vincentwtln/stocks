@@ -1,6 +1,4 @@
 ﻿@page "/"
-@inject HttpClient Http
-@inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
 
 <PageTitle>IDPA Aktienanalyse</PageTitle>
@@ -19,10 +17,6 @@
         align-items: center;
         justify-content: center;
     }
-
-    a {
-      color: inherit;
-    }
 </style>
 
 <div class="hero">
@@ -33,7 +27,7 @@
     </div>
 </div>
 
-<div class="container_bg subtext">
+<div class="container_bg mt-5">
     <h2>Information - IDPA</h2>
     <hr />
     <p>Sämtliche Angaben ohne Gewähr!</p>

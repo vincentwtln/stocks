@@ -2,17 +2,13 @@
 @inject HttpClient Http
 @inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
-
 @attribute [Authorize]
 
 <PageTitle>Aktienliste - IDPA Aktienanalyse</PageTitle>
+<PageHeader HeaderTitle="Stocks"></PageHeader>
+<br />
 
 <style>
-    :root {
-        --color: #4E5BED;
-        --transition-time: 0.5s;
-    }
-
     body {
         margin: 0;
         min-height: 100vh;
@@ -21,101 +17,102 @@
         align-items: center;
         justify-content: center;
     }
-
-    a {
-        color: inherit;
-    }
 </style>
 
-<PageHeader HeaderTitle="Stocks"></PageHeader>
-<br />
-
-<div class="mt-4 mb-5">
-    <div class="container">
-        <div class="row height d-flex justify-content-center align-items-center">
-            <div class="col-md-6">
-                <div class="form">
-                    <input type="text" class="form-control form-input" @bind-value="SearchTerm" placeholder="Search anything..." />
-                    <button type="submit" class="testbuttonvinc" @onclick="GetCompanies">Search</button>
+<div style="min-height: 100vh;">
+    <div class="mt-4 mb-5">
+        <div class="container">
+            <div class="row height d-flex justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <div class="form">
+                        <input type="text" class="form-control form-input" @bind-value="SearchTerm" placeholder="Search anything..." />
+                        <button type="submit" class="testbuttonvinc" @onclick="GetCompanies">Search</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="container-fluid" style="width: 80%;">
+        @if (companies == null || string.IsNullOrEmpty(SearchTerm))
+        {
+            if (symbols == null)
+            {
+            }
+            else
+            {
+                <Virtualize Items="symbols" Context="company">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 cont_v">
+                                <div class="career-search mb-60">
+                                    <div class="filter-result">
+                                        <div class="job-box d-md-flex align-items-center justify-content-between">
+                                            <div class="job-left d-md-flex align-items-center flex-wrap">
+                                                <div class="temp-img">
+                                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                                        <img src="@GetImageUrl(@company.symbol)" />
+                                                    </div>
+                                                </div>
+                                                <div class="job-content">
+                                                    <div class="header_ticker">
+                                                        @company.symbol
+                                                    </div>
+                                                    <div class="company_details">
+                                                        @company.name | @company.headQuarter
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="job-right my-4 flex-shrink-0">
+                                                <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Virtualize>
+            }
+        }
+        else
+        {
+            <Virtualize Items="companies" Context="company">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 cont_v">
+                            <div class="career-search mb-60">
+                                <div class="filter-result">
+                                    <div class="job-box d-md-flex align-items-center justify-content-between">
+                                        <div class="job-left d-md-flex align-items-center flex-wrap">
+                                            <div class="temp-img">
+                                                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                                    <img src="@GetImageUrl(@company.symbol)" />
+                                                </div>
+                                            </div>
+                                            <div class="job-content">
+                                                <div class="header_ticker">
+                                                    @company.symbol
+                                                </div>
+                                                <div class="company_details">
+                                                    @company.name | @company.exchangeShortName
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="job-right my-4 flex-shrink-0">
+                                            <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Virtualize>
+        }
+    </div>
 </div>
 
-@if (companies == null || string.IsNullOrEmpty(SearchTerm)) {
-    if (symbols == null) {
-        <div class="container-fluid" style="width: 80%;">
-            <p><em>Loading...</em></p>
-        </div>
-    } else {
-        <Virtualize Items="symbols" Context="company">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 cont_v">
-                        <div class="career-search mb-60">
-                            <div class="filter-result">
-                                <div class="job-box d-md-flex align-items-center justify-content-between">
-                                    <div class="job-left d-md-flex align-items-center flex-wrap">
-                                        <div class="temp-img">
-                                            <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                                <img src="@GetImageUrl(@company.symbol)" />
-                                            </div>
-                                        </div>
-                                        <div class="job-content">
-                                            <div class="header_ticker">
-                                                @company.symbol
-                                            </div>
-                                            <div class="company_details">
-                                                @company.name | @company.headQuarter
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="job-right my-4 flex-shrink-0">
-                                        <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Virtualize>
-    }
-} else {
-    <Virtualize Items="companies" Context="company">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 cont_v">
-                    <div class="career-search mb-60">
-                        <div class="filter-result">
-                            <div class="job-box d-md-flex align-items-center justify-content-between">
-                                <div class="job-left d-md-flex align-items-center flex-wrap">
-                                    <div class="temp-img">
-                                        <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                            <img src="@GetImageUrl(@company.symbol)" />
-                                        </div>
-                                    </div>
-                                    <div class="job-content">
-                                        <div class="header_ticker">
-                                            @company.symbol
-                                        </div>
-                                        <div class="company_details">
-                                            @company.name | @company.exchangeShortName
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Virtualize>
-}
 
 @code {
     private StatementList[]? symbols;

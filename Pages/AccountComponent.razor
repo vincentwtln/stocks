@@ -1,17 +1,10 @@
 ﻿@page "/account"
 @using BlazorApp1.Shared.Data
-@inject HttpClient Http
-@inject ApiKey fmpApiKey
 
 <PageTitle>Account - IDPA Aktienanalyse</PageTitle>
 <PageHeader HeaderTitle="Account"></PageHeader>
 
 <style>
-    :root {
-        --color: #4E5BED;
-        --transition-time: 0.5s;
-    }
-
     body {
         margin: 0;
         min-height: 100vh;
@@ -20,14 +13,12 @@
         align-items: center;
         justify-content: center;
     }
-
-    a {
-        color: inherit;
-    }
 </style>
 
-<div class="my-5">
-    <AccessControl />
+<div class="my-5" style="min-height: 100vh;">
+    <div>
+        <AccessControl />
+    </div>
 </div>
 
 @code {

@@ -1,17 +1,11 @@
 ﻿@page "/info"
-@inject HttpClient Http
-@inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
 
+<PageTitle>Information - IDPA Aktienanalyse</PageTitle>
 <PageHeader HeaderTitle="Information"></PageHeader>
 <br />
 
 <style>
-    :root {
-        --color: #4E5BED;
-        --transition-time: 0.5s;
-    }
-
     body {
         margin: 0;
         min-height: 100vh;
@@ -20,14 +14,10 @@
         align-items: center;
         justify-content: center;
     }
-
-    a {
-        color: inherit;
-    }
 </style>
 
 <div class="container text-center">
-    <h4 style="color: var(--signature-blue);">Keine Anlageempfehlungen oder professionelle Beratung!</h4>
+    <h4 style="color: var(--signature-yellow);">Keine Anlageempfehlungen oder professionelle Beratung!</h4>
     <p>
         Die Website dient nicht der Anlageberatung, und nichts auf der Website darf als Aufforderung zum Kauf oder als Empfehlung für ein Wertpapier durch Stocks.ch oder einen Dritten interpretiert werden. Ebenfalls möchten wir darauf hinweisen, dass es keine Garantie für die Richtigkeit der Daten gibt. 
 

@@ -7,11 +7,6 @@
 <PageTitle>Screener - IDPA Aktienanalyse</PageTitle>
 
 <style>
-    :root {
-        --color: #4E5BED;
-        --transition-time: 0.5s;
-    }
-
     body {
         margin: 0;
         min-height: 100vh;
@@ -20,12 +15,9 @@
         align-items: center;
         justify-content: center;
     }
-
-    a {
-        color: inherit;
-    }
 </style>
 
+<div style="min-height: 100vh;">
 <div class="container-fluid" style="width: 80%;">
 <PageHeader HeaderTitle="Screener"></PageHeader>
 <br />
@@ -161,43 +153,7 @@
     <div class="container-fluid" style="width: 80%;">
         <p><em>Loading...</em></p>
     </div>
-} else
-{
-    @*
-    @foreach (var company in stocks)
-    {
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 cont_v">
-                    <div class="career-search mb-60">
-                        <div class="filter-result">
-                            <div class="job-box d-md-flex align-items-center justify-content-between">
-                                <div class="job-left d-md-flex align-items-center flex-wrap">
-                                    <div class="temp-img">
-                                        <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                            <img src="@GetImageUrl(@company.symbol)" />
-                                        </div>
-                                    </div>
-                                    <div class="job-content">
-                                        <div class="header_ticker">
-                                            @company.symbol
-                                        </div>
-                                        <div class="company_details">
-                                            @company.companyName | @company.industry
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-right my-4 flex-shrink-0">
-                                    <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block stock-button">Get Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    *@
+} else {
     <Virtualize Items="stocks" Context="company">
         <div class="container">
             <div class="row">
@@ -231,6 +187,7 @@
             </div>
     </Virtualize>
 }
+</div>
 
 @code {
     private Screener[]? stocks;
