@@ -1,8 +1,16 @@
 /* /Pages/AccountComponent.razor.rz.scp.css */
+a[b-q8x6vovbu4] {
+    color: inherit;
+}
+
 .profile-picture-auth0[b-q8x6vovbu4] {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 /* /Pages/Index.razor.rz.scp.css */
+a[b-94th9x7r8o] {
+    color: inherit;
+}
+
 .hero[b-94th9x7r8o] {
     background-color: #074f57;
     background: 
@@ -20,10 +28,6 @@
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
-}
-
-.subtext[b-94th9x7r8o] {
-    margin-top: 3rem;
 }
 /* /Pages/StockComponent.razor.rz.scp.css */
 @media only screen and (max-width: 1200px) {
@@ -53,6 +57,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .custom-text-alignment[b-97ugh5n71c] {
+        text-align: center;
     }
 }
 
@@ -1884,11 +1892,6 @@ height: 100%;[b-lcf9scdcyw]
             border-bottom: 2px solid #4B4E6D;
         }
 /* /Shared/StocksLayout.razor.rz.scp.css */
-.body-test[b-jbp68fio6o] {
-    /*width: 80vw;*/
-    margin: auto auto;
-}
-
 a[b-jbp68fio6o] {
     text-decoration: none;
     color: black;
