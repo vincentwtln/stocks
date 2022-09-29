@@ -35,9 +35,13 @@
 @if (gainers == null || losers == null || sectorPerformances == null)
 {
 } else {
+<div class="container_bg mt-5">
+    <h2>Market</h2>
+    <hr />
+</div>
 <div class="container m-cont">
     <div class="row m-row">
-        <div class="col-xl-4 text-center">
+        <div class="col-xl-6 text-center">
             <div class="m-col-c">
                 <h5>Sector Performance</h5>
                 <hr />
@@ -50,8 +54,7 @@
                 </Virtualize>
             </div>
         </div>
-        <div class="col-xl-4 text-center m-col-e"></div>
-        <div class="col-xl-4 text-center">
+        <div class="col-xl-6 text-center">
             <div class="m-col-c">
                 <h5>Top Gainers</h5>
                 <hr />
@@ -82,27 +85,63 @@
             </div>
         </div>
     </div>
-    <!--
-    <div class="row m-row">
-        <div class="col-xl-4 text-center m-col-e"></div>
-        <div class="col-xl-4 text-center m-col-e"></div>
-        <div class="col-xl-4 text-center m-col-e"></div>
-    </div>
-    -->
 </div>
 }
 </div>
+
+
+@if (articles == null) {
+} else {
+    <div class="container_bg">
+        <h2>Articles</h2>
+        <hr />
+    </div>
+    <div class="container nuijafz">
+        <div class="row">
+        <Virtualize Items="articles.content" Context="article">
+            <a href="@article.link" target="_blank">
+            <div style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8) ), url('@article.image');background-size: cover;color: white;padding-top: 6rem;padding-bottom: 6rem;" class="col-xl-12 hero-article cont-art">
+                <div class="container_bg-article">
+                    <h2>@article.title</h2>
+                    <h5 style="color: var(--signature-yellow);">@article.site | by @article.author</h5>
+                </div>
+            </div>
+            </a>
+        </Virtualize>
+        </div>
+    </div>
+}
 
 @code {
     private GainerList[]? gainers;
     private LoserList[]? losers;
     private SectorPerformanceList[]? sectorPerformances;
+    private ArticleContent? articles;
 
     protected override async Task OnInitializedAsync()
     {
         gainers = await Http.GetFromJsonAsync<GainerList[]>("stock_market/gainers?apikey=" + fmpApiKey.myApiKey);
         losers = await Http.GetFromJsonAsync<LoserList[]>("stock_market/losers?apikey=" + fmpApiKey.myApiKey);
         sectorPerformances = await Http.GetFromJsonAsync<SectorPerformanceList[]>("sector-performance?apikey=" + fmpApiKey.myApiKey);
+        articles = await Http.GetFromJsonAsync<ArticleContent>("fmp/articles?apikey=" + fmpApiKey.myApiKey);
+    }
+
+    public partial class ArticleContent : Content
+    {
+        public int? size { get; set; }
+        public Content[]? content { get; set; }
+
+    }
+
+    public class Content
+    {
+        public string? title { get; set; }
+        public string? date { get; set; }
+        public string? content { get; set; }
+        public string? image { get; set; }
+        public string? link { get; set; }
+        public string? author { get; set; }
+        public string? site { get; set; }
     }
 
     public class GainerList

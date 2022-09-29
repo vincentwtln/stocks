@@ -11,6 +11,13 @@
         padding: 1.5rem 2rem;
         margin: auto auto;
     }
+
+    .cont-art:hover {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -26,6 +33,7 @@
         padding: 1.5rem 2rem;
         margin: auto auto;
         transition: all 0.2s;
+        width: 70%;
     }
 
         .m-col:hover, .m-col-c:hover {
@@ -65,12 +73,12 @@ a {
 /* --- Gainers & Losers --- */
 
 .m-cont {
-    margin-bottom: 2rem;
-    margin-top: 6rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
 }
 
 .m-row {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .m-row div {
@@ -109,4 +117,27 @@ a {
 
 .loser-ticker {
     font-weight: bold;
+}
+
+/* --- Articles --- */
+
+.cont-art {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    border-radius: 20px 20px;
+    -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+    -webkit-filter: grayscale(0);
+    transition: .3s ease-in-out;
+    -webkit-box-shadow: 0 0 50px 0 rgba(150, 150, 150, 0.4);
+    box-shadow: 0 0 50px 0 rgba(150, 150, 150, 0.4);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.container_bg-article {
+    max-width: 47rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
