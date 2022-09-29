@@ -20,6 +20,13 @@ a[b-q8x6vovbu4] {
         padding: 1.5rem 2rem;
         margin: auto auto;
     }
+
+    .cont-art:hover[b-94th9x7r8o] {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -35,6 +42,7 @@ a[b-q8x6vovbu4] {
         padding: 1.5rem 2rem;
         margin: auto auto;
         transition: all 0.2s;
+        width: 70%;
     }
 
         .m-col:hover[b-94th9x7r8o], .m-col-c:hover[b-94th9x7r8o] {
@@ -74,12 +82,12 @@ a[b-94th9x7r8o] {
 /* --- Gainers & Losers --- */
 
 .m-cont[b-94th9x7r8o] {
-    margin-bottom: 2rem;
-    margin-top: 6rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
 }
 
 .m-row[b-94th9x7r8o] {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .m-row div[b-94th9x7r8o] {
@@ -118,6 +126,29 @@ a[b-94th9x7r8o] {
 
 .loser-ticker[b-94th9x7r8o] {
     font-weight: bold;
+}
+
+/* --- Articles --- */
+
+.cont-art[b-94th9x7r8o] {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    border-radius: 20px 20px;
+    -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+    -webkit-filter: grayscale(0);
+    transition: .3s ease-in-out;
+    -webkit-box-shadow: 0 0 50px 0 rgba(150, 150, 150, 0.4);
+    box-shadow: 0 0 50px 0 rgba(150, 150, 150, 0.4);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.container_bg-article[b-94th9x7r8o] {
+    max-width: 47rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 /* /Pages/StockComponent.razor.rz.scp.css */
 @media only screen and (max-width: 1200px) {
