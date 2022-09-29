@@ -20,13 +20,6 @@ a[b-q8x6vovbu4] {
         padding: 1.5rem 2rem;
         margin: auto auto;
     }
-
-    .cont-art:hover[b-94th9x7r8o] {
-        -webkit-filter: grayscale(0);
-        filter: grayscale(0);
-        -webkit-transition: .3s ease-in-out;
-        transition: .3s ease-in-out;
-    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -53,6 +46,14 @@ a[b-q8x6vovbu4] {
             margin: auto auto;
             transition: all 0.2s;
         }
+
+
+    .cont-art:hover[b-94th9x7r8o] {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
 }
 
 a[b-94th9x7r8o] {
