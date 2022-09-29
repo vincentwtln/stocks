@@ -1,14 +1,11 @@
 ﻿@page "/"
+@inject HttpClient Http
+@inject ApiKey fmpApiKey
 @using BlazorApp1.Shared.Data
 
 <PageTitle>IDPA Aktienanalyse</PageTitle>
 
 <style>
-    :root {
-      --color: #4E5BED;
-      --transition-time: 0.5s;
-    }
-
     body {
         margin: 0;
         min-height: 100vh;
@@ -34,6 +31,111 @@
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 </div>
 
+<div>
+@if (gainers == null || losers == null || sectorPerformances == null)
+{
+} else {
+<div class="container m-cont">
+    <div class="row m-row">
+        <div class="col-xl-4 text-center">
+            <div class="m-col-c">
+                <h5>Sector Performance</h5>
+                <hr />
+                <Virtualize Items="sectorPerformances" Context="performance">
+                    <p>
+                        <span style="font-weight: bold;@StyleNegativePositive(performance.changesPercentage)" class=""><i class="fa-solid @GetNegativePositiveIcon(performance.changesPercentage)"></i></span>
+                        <span style="font-weight: bold;@StyleNegativePositive(performance.changesPercentage)" class="">@performance.changesPercentage</span>
+                        <span style="font-weight: bold;" class="">@performance.sector</span>
+                    </p>
+                </Virtualize>
+            </div>
+        </div>
+        <div class="col-xl-4 text-center m-col-e"></div>
+        <div class="col-xl-4 text-center">
+            <div class="m-col-c">
+                <h5>Top Gainers</h5>
+                <hr />
+                <div class="container">
+                    @for (var i = 0; i < 6; i++)
+                    {
+                        <p>
+                            <span class="gainer-icon"><i class="fa-solid fa-up-long"></i></span>
+                            <span class="gainer-percentage">@gainers[i].changesPercentage.ToString("#.#") %</span>
+                            <span class="gainer-ticker"><a href="@($"/stocks/stock/{gainers[i].symbol}")">@gainers[i].symbol</a></span>
+                        </p>
+                    }
+                </div>
+            </div>
+            <div class="m-col-c">
+                <h5>Top Losers</h5>
+                <hr />
+                <div class="container">
+                    @for (var i = 0; i < 6; i++)
+                    {
+                        <p>
+                            <span class="loser-icon"><i class="fa-solid fa-down-long"></i></span>
+                            <span class="loser-percentage">@losers[i].changesPercentage.ToString("#.#") %</span>
+                            <span class="loser-ticker"><a href="@($"/stocks/stock/{losers[i].symbol}")">@losers[i].symbol</a></span>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="row m-row">
+        <div class="col-xl-4 text-center m-col-e"></div>
+        <div class="col-xl-4 text-center m-col-e"></div>
+        <div class="col-xl-4 text-center m-col-e"></div>
+    </div>
+    -->
+</div>
+}
+</div>
+
 @code {
-    
+    private GainerList[]? gainers;
+    private LoserList[]? losers;
+    private SectorPerformanceList[]? sectorPerformances;
+
+    protected override async Task OnInitializedAsync()
+    {
+        gainers = await Http.GetFromJsonAsync<GainerList[]>("stock_market/gainers?apikey=" + fmpApiKey.myApiKey);
+        losers = await Http.GetFromJsonAsync<LoserList[]>("stock_market/losers?apikey=" + fmpApiKey.myApiKey);
+        sectorPerformances = await Http.GetFromJsonAsync<SectorPerformanceList[]>("sector-performance?apikey=" + fmpApiKey.myApiKey);
+    }
+
+    public class GainerList
+    {
+        public string? symbol { get; set; }
+        public string? name { get; set; }
+        public float? change { get; set; }
+        public float? price { get; set; }
+        public float changesPercentage { get; set; }
+    }
+
+    public class LoserList
+    {
+        public string? symbol { get; set; }
+        public string? name { get; set; }
+        public float? change { get; set; }
+        public float? price { get; set; }
+        public float changesPercentage { get; set; }
+    }
+
+    public class SectorPerformanceList
+    {
+        public string? sector { get; set; }
+        public string? changesPercentage { get; set; }
+    }
+
+    private string StyleNegativePositive(string percCh)
+    {
+        if (percCh.StartsWith("-")) { return "color:red;"; } else { return "color: green;"; }
+    }
+
+    private string GetNegativePositiveIcon(string percCh)
+    {
+        if (percCh.StartsWith("-")) { return "fa-down-long"; } else { return "fa-up-long"; }
+    }
 }

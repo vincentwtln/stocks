@@ -1,5 +1,46 @@
-﻿a {
+﻿@media only screen and (max-width: 1200px) {
+    .m-col-c {
+        -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+        box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+        border-radius: 10px;
+        padding: 1.5rem 2rem;
+        margin: auto auto;
+    }
+
+    .m-col {
+        padding: 1.5rem 2rem;
+        margin: auto auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .m-col {
+        display: flex;
+    }
+
+    .m-col, .m-col-c {
+        -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+        box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+        border-radius: 10px;
+        padding: 1.5rem 2rem;
+        margin: auto auto;
+        transition: all 0.2s;
+    }
+
+        .m-col:hover, .m-col-c:hover {
+            -webkit-box-shadow: 0 0 50px 0 rgba(150, 150, 150, 0.4);
+            box-shadow: 0 0 50px 0 rgba(150, 150, 150, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin: auto auto;
+            transition: all 0.2s;
+        }
+}
+
+a {
     color: inherit;
+    text-decoration: none;
 }
 
 .hero {
@@ -19,4 +60,53 @@
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+/* --- Gainers & Losers --- */
+
+.m-cont {
+    margin-bottom: 2rem;
+    margin-top: 6rem;
+}
+
+.m-row {
+    margin-bottom: 2rem;
+}
+
+.m-row div {
+
+}
+
+.m-col-e {
+    
+}
+
+.m-col-c, .m-col-c:hover {
+    margin-bottom: 2rem;
+}
+
+.gainer-icon {
+    color: var(--signature-green);
+}
+
+.gainer-percentage {
+    color: var(--signature-green);
+    font-weight: bold;
+}
+
+.gainer-ticker {
+    font-weight: bold;
+}
+
+.loser-icon {
+    color: var(--signature-red);
+}
+
+.loser-percentage {
+    color: var(--signature-red);
+    font-weight: bold;
+}
+
+.loser-ticker {
+    font-weight: bold;
 }
