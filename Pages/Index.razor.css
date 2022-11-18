@@ -128,11 +128,11 @@ a {
 }
 
 .loser-icon {
-    color: var(--signature-red);
+    color: red;
 }
 
 .loser-percentage {
-    color: var(--signature-red);
+    color: red;
     font-weight: bold;
 }
 

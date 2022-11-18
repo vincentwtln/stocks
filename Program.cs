@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Syncfusion.Blazor;
 
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzIwNDc4QDMyMzAyZTMyMmUzMEhXU0lRRU1HbkpZaStOUkZPYWVjcDBsbzZscmhBN3k5TUFWYjV3WCsvclU9");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzYzODU2QDMyMzAyZTMzMmUzMERmMkVRRWxSUXduZFJKdXJyTGxlcE5DN0I2bWRtUklrNzN2VTJSaCtjTzQ9");
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

@@ -18,17 +18,19 @@
 
 <div class="hero">
     <div class="container_bg">
-        <h1 style="font-weight: bold;">IDPA - Aktienanalye simplifiziert</h1>
+        <h1 style="font-weight: bold;">IDPA - Analyzing stocks simplified</h1>
         <h2 style="color: var(--signature-yellow)">BM 2023</h2>
-        <p style="font-style: italic;">Autoren: Vincent Kilian Wittlin & Ernest Schaffner</p>
+        <p style="font-style: italic;">Authors: Vincent Kilian Wittlin & Ernest Schaffner</p>
     </div>
 </div>
 
 <div class="container_bg mt-5">
     <h2>Information - IDPA</h2>
     <hr />
-    <p>Sämtliche Angaben ohne Gewähr!</p>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <h4>Abstract</h4>
+    <p>The purpose of this project is, on the one hand, the creation, management and theoretical marketing of a responsive web application. This should allow us and our end users to obtain all information about listed companies. On the other hand, we want to document a comprehensive report about the history of the stock market as well as its events and debates. This report will also be placed on our website.</p>
+    <br />
+    <p>"IDPA" is the German word for an interdisciplinary project. "BM" is the German term for a vocational baccalaureate. You will certainly come across these terms a few times on this website.</p>
 </div>
 
 <div>
@@ -48,7 +50,7 @@
                 <Virtualize Items="sectorPerformances" Context="performance">
                     <p>
                         <span style="font-weight: bold;@StyleNegativePositive(performance.changesPercentage)" class=""><i class="fa-solid @GetNegativePositiveIcon(performance.changesPercentage)"></i></span>
-                        <span style="font-weight: bold;@StyleNegativePositive(performance.changesPercentage)" class="">@performance.changesPercentage</span>
+                        <span style="font-weight: bold;@StyleNegativePositive(performance.changesPercentage)" class="">@performance.parsedDouble.ToString("0.##")%</span>
                         <span style="font-weight: bold;" class="">@performance.sector</span>
                     </p>
                 </Virtualize>
@@ -166,6 +168,9 @@
     {
         public string? sector { get; set; }
         public string? changesPercentage { get; set; }
+        char[] charsToTrim = { '%' };
+        public string cleanString => changesPercentage.Trim(charsToTrim);
+        public float parsedDouble => float.Parse(cleanString, System.Globalization.CultureInfo.InvariantCulture);
     }
 
     private string StyleNegativePositive(string percCh)
