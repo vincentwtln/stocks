@@ -64,7 +64,7 @@
                                                 </div>
                                             </div>
                                             <div class="job-right my-4 flex-shrink-0">
-                                                <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
+                                                <a href="@($"/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                             </div>
                                         </div>
                                         <div class="job-right my-4 flex-shrink-0">
-                                            <a href="@($"/stocks/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
+                                            <a href="@($"/stock/{company.symbol}")" class="btn d-block w-100 d-sm-inline-block testbuttonvinc2">Get Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
 
     protected async Task GetCompanies()
     {
-        companies = await Http.GetFromJsonAsync<SearchItems[]>("search?query=" + SearchTerm + "&apikey=" + fmpApiKey.myApiKey);
+        companies = await Http.GetFromJsonAsync<SearchItems[]>("search?query=" + SearchTerm + "&exchange=TSX,AMEX,NASDAQ,NYSE,EURONEXT&apikey=" + fmpApiKey.myApiKey);
     }
 
     public class StatementList
