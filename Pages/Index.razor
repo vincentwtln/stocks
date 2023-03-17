@@ -67,7 +67,7 @@
                         <p>
                             <span class="gainer-icon"><i class="fa-solid fa-up-long"></i></span>
                             <span class="gainer-percentage">@gainers[i].changesPercentage.ToString("#.#") %</span>
-                            <span class="gainer-ticker"><a href="@($"/stocks/stock/{gainers[i].symbol}")">@gainers[i].symbol</a></span>
+                            <span class="gainer-ticker"><a href="@($"/stock/{gainers[i].symbol}")">@gainers[i].symbol</a></span>
                         </p>
                     }
                 </div>
@@ -81,7 +81,7 @@
                         <p>
                             <span class="loser-icon"><i class="fa-solid fa-down-long"></i></span>
                             <span class="loser-percentage">@losers[i].changesPercentage.ToString("#.#") %</span>
-                            <span class="loser-ticker"><a href="@($"/stocks/stock/{losers[i].symbol}")">@losers[i].symbol</a></span>
+                            <span class="loser-ticker"><a href="@($"/stock/{losers[i].symbol}")">@losers[i].symbol</a></span>
                         </p>
                     }
                 </div>
